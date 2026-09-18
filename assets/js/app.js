@@ -203,8 +203,6 @@ function initApp() {
     const tgtLocEl = document.getElementById('tgt-loc');
     const boxSource = document.getElementById('box-source');
     const boxTarget = document.getElementById('box-target');
-    const srcStamp = document.getElementById('src-stamp');
-    const tgtStamp = document.getElementById('tgt-stamp');
     const catalogSourceLabel = document.getElementById('catalog-source-label');
     const catalogGrid = document.getElementById('catalog-grid');
 
@@ -229,10 +227,6 @@ function initApp() {
             boxSource.setAttribute('data-year', '1969');
             boxTarget.setAttribute('data-year', '1914');
             catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
-            
-            // Actualizar Estampitas
-            if (srcStamp) srcStamp.src = "borges-viejo.jpg";
-            if (tgtStamp) tgtStamp.src = "borges-joven.jpg";
         } else {
             srcYearEl.textContent = "1914";
             srcLocEl.textContent = "GINEBRA (Borges joven)";
@@ -241,10 +235,6 @@ function initApp() {
             boxSource.setAttribute('data-year', '1914');
             boxTarget.setAttribute('data-year', '1969');
             catalogSourceLabel.textContent = "1914 — GINEBRA";
-
-            // Actualizar Estampitas
-            if (srcStamp) srcStamp.src = "borges-joven.jpg";
-            if (tgtStamp) tgtStamp.src = "borges-viejo.jpg";
         }
 
         placeholder.classList.remove('hidden');
