@@ -46,6 +46,11 @@
             <div class="intro-action">
                 <button id="btn-enter" class="btn-primary">ENTRAR AL DISPOSITIVO</button>
             </div>
+
+            <!-- NOMBRES DE LOS AUTORES -->
+            <footer class="intro-footer">
+                <p>Mateo Fuertes, Ariadna González, Gloria Ocariz | Trabajo evaluativo n° 2 – Lenguajes II</p>
+            </footer>
         </div>
     </section>
 
@@ -66,12 +71,12 @@
 
         <main class="app-main">
 
-            <!-- VISTA: TRADUCTOR -->
+            <!-- VISTA: TRADUCTOR (CATÁLOGO CERRADO) -->
             <div id="panel-translator" class="tab-panel active">
                 
                 <div class="semiosphere-selector">
                     <div class="semiosphere-box box-source" id="box-source">
-                        <span class="sys-tag">ORIGEN</span>
+                        <span class="sys-tag">SEMIOSFERA ORIGEN</span>
                         <span class="year" id="src-year">1969</span>
                         <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
                     </div>
@@ -83,31 +88,25 @@
                     </button>
 
                     <div class="semiosphere-box box-target" id="box-target">
-                        <span class="sys-tag">DESTINO</span>
+                        <span class="sys-tag">SEMIOSFERA DESTINO</span>
                         <span class="year" id="tgt-year">1914</span>
                         <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
                     </div>
                 </div>
 
-                <div class="translation-controls">
-                    <div class="input-wrapper">
-                        <input type="text" id="term-input" placeholder="Escribí una palabra, objeto, concepto o experiencia..." autocomplete="off">
-                        <button id="btn-translate" class="btn-action">TRADUCIR</button>
+                <!-- CATÁLOGO DE CONCEPTOS DISPONIBLES -->
+                <section class="catalog-section">
+                    <span class="catalog-title">CATÁLOGO DE TÉRMINOS DISPONIBLES (<span id="catalog-source-label">1969 — CAMBRIDGE</span>):</span>
+                    <div class="catalog-grid" id="catalog-grid">
+                        <!-- Las opciones del catálogo se generan dinámicamente con JS -->
                     </div>
+                </section>
 
-                    <div class="quick-tags">
-                        <span class="tag-label">Opciones sugeridas:</span>
-                        <button class="tag-btn" id="tag-river" data-term="Río Charles">Río Charles</button>
-                        <button class="tag-btn" data-term="Dólar">Dólar</button>
-                        <button class="tag-btn" data-term="Borges anciano">Borges anciano</button>
-                        <button class="tag-btn" data-term="Cambridge">Cambridge</button>
-                    </div>
-                </div>
-
+                <!-- DISPLAY / RESULTADO DE LA TRADUCCIÓN -->
                 <div class="translation-display" id="translation-display">
                     
                     <div class="display-placeholder" id="display-placeholder">
-                        <p>Ingresá un término para iniciar el proceso de trasvasamiento entre espacios semióticos.</p>
+                        <p>Seleccioná un elemento del catálogo para iniciar la traducción entre semiosferas.</p>
                     </div>
 
                     <div class="translation-card hidden" id="translation-card">
@@ -168,7 +167,7 @@
                 </article>
             </div>
 
-            <!-- VISTA: EL OTRO (TEXTO COMPLETO DEL CUENTO) -->
+            <!-- VISTA: EL OTRO (CUENTO COMPLETO) -->
             <div id="panel-about" class="tab-panel">
                 <article class="story-article">
                     <header class="story-header">
@@ -187,7 +186,7 @@
                         <p>Me contestó que sí.</p>
                         <p>—En tal caso —le dije resueltamente— usted se llama Jorge Luis Borges. Yo también soy Jorge Luis Borges. Estamos en 1969, en la ciudad de Cambridge.</p>
                         <p>—No —me respondió con mi propia voz un poco lejana.</p>
-                        <p>Al cabo de un tiempo insisted:</p>
+                        <p>Al cabo de un tiempo insistió:</p>
                         <p>—Yo estoy aquí en Ginebra, en un banco, a unos pasos del Ródano. Lo raro es que nos parecemos, pero usted es mucho mayor, con la cabeza gris.</p>
                         <p>Yo le contesté:</p>
                         <p>—Puedo probarte que no miento. Voy a decirte cosas que no puede saber un desconocido. En casa hay un mate de plata con un pie de serpientes, que trajo del Perú nuestro bisabuelo. También hay una palangana de plata, que pendía del arzón. En el armario de tu cuarto hay dos filas de libros. Los tres volúmenes de <em>Las mil y una noches</em> de Lane con grabados en acero y notas en cuerpo menor entre capítulo y capítulo, el diccionario latino de Quicherat, la <em>Germania</em> de Tácito en latín y en la versión de Gordon, un <em>Don Quijote</em> de la casa Garnier, las <em>Tablas de sangre</em> de Rivera Indarte, con la dedicatoria del autor, el <em>Sartor Resartus</em> de Carlyle, una biografía de Amiel y, escondido detrás de los demás, un libro en rústica sobre las costumbres sexuales de los pueblos balcánicos. No he olvidado tampoco un atardecer en un primer piso de la plaza Dubourg.</p>
@@ -220,7 +219,7 @@
                         <p>Sin hacerme caso, me aclaró que su libro cantaría la fraternidad de todos los hombres. El poeta de nuestro tiempo no puede dar la espalda a su época.</p>
                         <p>Me quedé pensando y le pregunté si verdaderamente se sentía hermano de todos. Por ejemplo, de todos los empresarios de pompas fúnebres, de todos los carteros, de todos los buzos, de todos los que viven en la acera de los números pares, de todos los afónicos, etcétera. Me dijo que su libro se refería a la gran masa de los oprimidos y parias.</p>
                         <p>—Tu masa de oprimidos y de parias —le contesté— no es más que una abstracción. Solo los individuos existen, si es que existe alguien. El hombre de ayer no es el hombre de hoy sentenció algún griego. Nosotros dos, en este banco de Ginebra o de Cambridge, somos tal vez la prueba.</p>
-                        <p>Salvo en las severas páginas de la Historia, los hechos memorables prescinden de frases memorables. Un hombre a punto de morir quiere acordarse de un grabado entrevisto en la infancia; los soldados que están por entrar en la batalla hablan del barro o del sargento. Nuestra situación era única y, francamente, no estábamos preparados. Hablamos, fatalmente, de letras; temo no haber dicho otras cosas que las que suelo decir a los periodistas. Mi <em>alter ego</em> creía en la invención o descubrimiento de metáforas nuevas; yo en las que corresponden a afinidades íntimas y notorias y que nuestra imaginación ya ha aceptado. La vejez de los hombres y el ocaso, los sueños y la vida, el correr del tiempo y del agua. Le expuse esta opinión, que expondría en un libro años después.</p>
+                        <p>Salvo en las severas páginas de la Historia, los hechos memorables prescinden de frases memorables. Un hombre a punto de morir quiere acordarse de un grabado entrevisto en la infancia; los soldados que están por entrar en la batalla hablan del barro o del sargento. Nuestra situación era única y, francamente, no estábamos preparados. Hablamos, fatalmente, de letras; temo no haber dicho otras cosas que las que suelo decir a los periodistas. Mi <em>alter ego</em> creía en la invención o descubrimiento de metáforas nuevas; yo en las que corresponden a afinidades íntimas y notorias y que nuestra imaginación ya ha accepted. La vejez de los hombres y el ocaso, los sueños y la vida, el correr del tiempo y del agua. Le expuse esta opinión, que expondría en un libro años después.</p>
                         <p>Casi no me escuchaba. De pronto dijo:</p>
                         <p>—Si usted ha sido yo, ¿cómo explicar que haya olvidado su encuentro con un señor de edad que en 1918 le dijo que él también era Borges?</p>
                         <p>No había pensado en esa dificultad. Le respondí sin convicción:</p>
@@ -232,7 +231,7 @@
                         <p>Nuestra conversación ya había durado demasiado para ser la de un sueño. Una brusca idea se me ocurrió.</p>
                         <p>—Yo te puedo probar inmediatamente —le dije— que no estás soñando conmigo. Oí bien este verso, que no has leído nunca, que yo recuerde.</p>
                         <p>Lentamente entoné la famosa línea: <em>L’hydre-univers tordant son corps écaillé d’astres</em>.</p>
-                        <p>Sentí su casi temeroso estupor. Lo repitió en voz baja, saboreando cada resplandeciente palabra.</p>
+                        <p>Sentí su casi temeroso stupor. Lo repitió en voz baja, saboreando cada resplandeciente palabra.</p>
                         <p>—Es verdad —balbuceó—. Yo no podré nunca escribir una línea como esa. Hugo nos había unido.</p>
                         <p>Antes, él había repetido con fervor, ahora lo recuerdo, aquella breve pieza en que Walt Whitman rememora una compartida noche ante el mar, en que fue realmente feliz.</p>
                         <p>—Si Whitman la ha cantado —observé— es porque la deseaba y no sucedió. El poema gana si adivinamos que es la manifestación de un anhelo, no la historia de un hecho.</p>
