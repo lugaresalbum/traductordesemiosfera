@@ -45,7 +45,7 @@ body {
     color: var(--text-muted);
 }
 
-.screen {
+. {
     display: none;
     min-height: 100vh;
 }
@@ -55,21 +55,16 @@ body {
     flex-direction: column;
 }
 
-/* PORTADA MINIMALISTA CON ILUSTRACIÓN INTEGRADA SUTIL EN FONDO */
+/* PORTADA MINIMALISTA CON FONDO ELEGANTE */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 3rem 2rem;
     position: relative;
-    background-color: #0d1217;
+    background-color: #1a1816; /* Fondo oscuro elegante tono tinta */
     background-image: 
-        url('../../image.jpg'), 
-        url('../image.jpg'), 
-        url('image.jpg'), 
-        url('/image.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+        radial-gradient(rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 20px 20px;
 }
 
 /* Capa de contraste vintage oscura para garantizar legibilidad */
