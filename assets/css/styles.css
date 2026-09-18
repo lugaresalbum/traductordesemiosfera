@@ -55,21 +55,13 @@ body {
     flex-direction: column;
 }
 
-/* PORTADA MINIMALISTA CON ILUSTRACIÓN INTEGRADA SUTIL EN FONDO */
+/* PORTADA CON LA MISMA ESTÉTICA QUE EL RESTO DE LA PÁGINA */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 3rem 2rem;
     position: relative;
-    background-color: #0d1217;
-    background-image: 
-        url('../../image.jpg'), 
-        url('../image.jpg'), 
-        url('image.jpg'), 
-        url('/image.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-color: var(--bg-main);
 }
 
 /* Capa de contraste vintage oscura para garantizar legibilidad */
