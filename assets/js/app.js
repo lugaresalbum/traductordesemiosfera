@@ -299,37 +299,37 @@ function initApp() {
         memoryList.prepend(item);
     }
 
-    // NAVEGACIÓN Y EVENTOS
+    // EVENTOS
     const btnEnter = document.getElementById('btn-enter');
     if (btnEnter) {
-        btnEnter.onclick = function() {
+        btnEnter.addEventListener('click', function() {
             document.getElementById('screen-intro').classList.remove('active');
             document.getElementById('screen-app').classList.add('active');
             window.scrollTo(0, 0);
-        };
+        });
     }
 
     document.querySelectorAll('.nav-link').forEach(btn => {
-        btn.onclick = function(e) {
+        btn.addEventListener('click', function(e) {
             document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
 
             e.target.classList.add('active');
             const target = document.getElementById(e.target.dataset.target);
             if (target) target.classList.add('active');
-        };
+        });
     });
 
     const btnSwap = document.getElementById('btn-swap');
     if (btnSwap) {
-        btnSwap.onclick = function() {
+        btnSwap.addEventListener('click', function() {
             const temp = sourceYear;
             sourceYear = targetYear;
             targetYear = temp;
 
             updateDirectionUI();
             renderCatalog();
-        };
+        });
     }
 
     updateDirectionUI();
