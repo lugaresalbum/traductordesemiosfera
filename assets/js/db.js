@@ -214,4 +214,93 @@ export const TRANSLATION_DB = [
         type: "NIVEL DE PRECISIÓN: ALTO",
         explanation: "Se hace patente la transformación de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
     }
+    // 13. CEGUERA GRADUAL <-> VISTA COMPLETA
+    {
+        term: "Ceguera gradual",
+        sourceYear: 1969,
+        targetYear: 1914,
+        translation: "Vista completa",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "\"Cuando alcances mi edad habrás perdido casi por completo la vista. Verás el color amarillo y sombras y luces. No te preocupes. La ceguera gradual no es una cosa trágica. Es como un lento atardecer de verano\"."
+    },
+    {
+        term: "Vista completa",
+        sourceYear: 1914,
+        targetYear: 1969,
+        translation: "Ceguera gradual",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "\"Cuando alcances mi edad habrás perdido casi por completo la vista. Verás el color amarillo y sombras y luces. No te preocupes. La ceguera gradual no es una cosa trágica. Es como un lento atardecer de verano\"."
+    },
+
+    // 14. ESCRITOR RECONOCIDO <-> JÓVEN DESCONOCIDO
+    {
+        term: "Escritor reconocido",
+        sourceYear: 1969,
+        targetYear: 1914,
+        translation: "Jóven desconocido",
+        type: "NIVEL DE PRECISIÓN: MEDIO",
+        explanation: "En la ventana temporal de 1969, el Borges anciano ya ha escrito gran parte de su obra literaria y es conocido mundialmente."
+    },
+    {
+        term: "Jóven desconocido",
+        sourceYear: 1914,
+        targetYear: 1969,
+        translation: "Escritor reconocido",
+        type: "NIVEL DE PRECISIÓN: MEDIO",
+        explanation: "En la ventana temporal de 1969, el Borges anciano ya ha escrito gran parte de su obra literaria y es conocido mundialmente."
+    },
+
+    // 15. EL TIEMPO ES PASADO <-> EL TIEMPO ES FUTURO
+    {
+        term: "El tiempo es pasado",
+        sourceYear: 1969,
+        targetYear: 1914,
+        translation: "El tiempo es futuro",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "La percepción acerca del tiempo cambia. Mientras que el jóven tiene una vida por delante, el anciano transitó una vida de experiencias."
+    },
+    {
+        term: "El tiempo es futuro",
+        sourceYear: 1914,
+        targetYear: 1969,
+        translation: "El tiempo es pasado",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "La percepción acerca del tiempo cambia. Mientras que el jóven tiene una vida por delante, el anciano transitó una vida de experiencias."
+    },
+
+    // 16. URSS <-> IMPERIO RUSO
+    {
+        term: "URSS",
+        sourceYear: 1969,
+        targetYear: 1914,
+        translation: "Imperio Ruso",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "Luego de la Revolución Rusa de 1917, se inició un proceso social e histórico que culminó con la formación de la Unión Soviética en diciembre de 1922."
+    },
+    {
+        term: "Imperio Ruso",
+        sourceYear: 1914,
+        targetYear: 1969,
+        translation: "URSS",
+        type: "NIVEL DE PRECISIÓN: ALTO",
+        explanation: "Luego de la Revolución Rusa de 1917, se inició un proceso social e histórico que culminó con la formación de la Unión Soviética en diciembre de 1922."
+    },
+
+    // 17. TV Y MEDIOS DE COMUNICACIÓN MASIVOS <-> RADIO
+    {
+        term: "TV y medios de comunicación masivos",
+        sourceYear: 1969,
+        targetYear: 1914,
+        translation: "Radio",
+        type: "NIVEL DE PRECISIÓN: MEDIO",
+        explanation: null
+    },
+    {
+        term: "Radio",
+        sourceYear: 1914,
+        targetYear: 1969,
+        translation: "TV y medios de comunicación masivos",
+        type: "NIVEL DE PRECISIÓN: MEDIO",
+        explanation: null
+    }
 ];
