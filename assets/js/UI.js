@@ -1,6 +1,5 @@
 export class UI {
     constructor() {
-        // Elementos DOM
         this.srcYearEl = document.getElementById('src-year');
         this.srcLocEl = document.getElementById('src-loc');
         this.tgtYearEl = document.getElementById('tgt-year');
@@ -12,17 +11,17 @@ export class UI {
         this.placeholder = document.getElementById('display-placeholder');
         this.card = document.getElementById('translation-card');
 
-        // Campos de la ficha
         this.cardSrcYear = document.getElementById('card-src-year');
         this.cardTgtYear = document.getElementById('card-tgt-year');
         this.cardSrcTerm = document.getElementById('card-src-term');
         this.cardTgtTerm = document.getElementById('card-tgt-term');
         this.cardType = document.getElementById('card-type');
-        this.cardEquivalence = document.getElementById('card-equivalence');
         this.cardDistance = document.getElementById('card-distance');
+        this.cardExplanationContainer = document.getElementById('card-explanation-container');
         this.cardExplanation = document.getElementById('card-explanation-text');
         this.cardStatus = document.getElementById('card-status');
 
+        this.tagRiver = document.getElementById('tag-river');
         this.memoryList = document.getElementById('memory-list');
     }
 
@@ -34,6 +33,11 @@ export class UI {
             this.tgtLocEl.textContent = "GINEBRA (Borges joven)";
             this.boxSource.setAttribute('data-year', '1969');
             this.boxTarget.setAttribute('data-year', '1914');
+            
+            if (this.tagRiver) {
+                this.tagRiver.textContent = "Río Charles";
+                this.tagRiver.setAttribute('data-term', 'Río Charles');
+            }
         } else {
             this.srcYearEl.textContent = "1914";
             this.srcLocEl.textContent = "GINEBRA (Borges joven)";
@@ -41,6 +45,11 @@ export class UI {
             this.tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
             this.boxSource.setAttribute('data-year', '1914');
             this.boxTarget.setAttribute('data-year', '1969');
+            
+            if (this.tagRiver) {
+                this.tagRiver.textContent = "Río Ródano";
+                this.tagRiver.setAttribute('data-term', 'Río Ródano');
+            }
         }
     }
 
@@ -55,26 +64,23 @@ export class UI {
         if (result) {
             this.cardTgtTerm.textContent = result.translation;
             this.cardType.textContent = result.type;
-            this.cardEquivalence.textContent = result.equivalence;
-            this.cardDistance.textContent = `DISTANCIA: ${result.distance || "55 AÑOS"}`;
-            this.cardExplanation.textContent = result.explanation;
-
-            if (result.isAnomaly) {
-                this.card.classList.add('anomaly-active');
-                this.cardStatus.textContent = "ALERTA // ANOMALÍA TEMPORAL EN LA SEMIOSFERA";
-            } else {
-                this.card.classList.remove('anomaly-active');
-                this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
-            }
-        } else {
-            // Fallback para búsqueda libre no registrada
-            this.card.classList.remove('anomaly-active');
-            this.cardTgtTerm.textContent = "NO EXISTE UN EQUIVALENTE EXACTO";
-            this.cardType.textContent = "TRADUCCIÓN TENTATIVA";
-            this.cardEquivalence.textContent = "DESCONOCIDA / FUERA DE BASE";
             this.cardDistance.textContent = "DISTANCIA: 55 AÑOS";
-            this.cardExplanation.textContent = `El término "${query}" no posee un registro específico en la semiosfera de ${sourceYear}. La traducción intenta proyectar una aproximación general, pero el concepto excede los códigos culturales disponibles.`;
-            this.cardStatus.textContent = "REGISTRO TENTATIVO // SIN EQUIVALENCIA RIGUROSA";
+
+            if (result.explanation) {
+                this.cardExplanationContainer.classList.remove('hidden');
+                this.cardExplanation.textContent = result.explanation;
+            } else {
+                this.cardExplanationContainer.classList.add('hidden');
+            }
+
+            this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
+        } else {
+            this.cardTgtTerm.textContent = "NO EXISTE UN EQUIVALENTE REGISTRADO";
+            this.cardType.textContent = "NIVEL DE PRECISIÓN: NULO";
+            this.cardDistance.textContent = "DISTANCIA: 55 AÑOS";
+            this.cardExplanationContainer.classList.remove('hidden');
+            this.cardExplanation.textContent = `El término "${query}" no posee una correspondencia registrada en las cuatro traducciones del dispositivo.`;
+            this.cardStatus.textContent = "REGISTRO TENTATIVO // SIN EQUIVALENCIA";
         }
     }
 
@@ -86,7 +92,7 @@ export class UI {
         item.className = 'memory-item';
         
         const targetText = result ? result.translation : "SIN EQUIVALENTE";
-        const typeText = result ? result.type : "TENTATIVA";
+        const typeText = result ? result.type : "PRECISIÓN: NULA";
 
         item.innerHTML = `
             <span><strong>${query.toUpperCase()}</strong> (${sourceYear} → ${targetYear})</span>
