@@ -59,11 +59,14 @@ body {
 }
 
 /* --- PORTADA / INTRO --- */
+/* --- PORTADA / INTRO CON IMAGEN DE FONDO --- */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(180deg, #f0eee6 0%, #f5f4ef 100%);
+    background: linear-gradient(rgba(245, 244, 239, 0.85), rgba(245, 244, 239, 0.85)), 
+                url('../../assets/real.jpg') no-repeat center center;
+    background-size: cover;
 }
 
 .intro-container {
