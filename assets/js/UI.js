@@ -16,7 +16,6 @@ export class UI {
         this.cardSrcTerm = document.getElementById('card-src-term');
         this.cardTgtTerm = document.getElementById('card-tgt-term');
         this.cardType = document.getElementById('card-type');
-        this.cardDistance = document.getElementById('card-distance');
         this.cardExplanationContainer = document.getElementById('card-explanation-container');
         this.cardExplanation = document.getElementById('card-explanation-text');
         this.cardStatus = document.getElementById('card-status');
@@ -64,27 +63,28 @@ export class UI {
         if (result) {
             this.cardTgtTerm.textContent = result.translation;
             this.cardType.textContent = result.type;
-            this.cardDistance.textContent = "DISTANCIA: 55 AÑOS";
 
-            if (result.explanation) {
+            if (result.explanation && result.explanation.trim() !== "") {
                 this.cardExplanationContainer.classList.remove('hidden');
                 this.cardExplanation.textContent = result.explanation;
             } else {
                 this.cardExplanationContainer.classList.add('hidden');
+                this.cardExplanation.textContent = "";
             }
 
             this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
         } else {
             this.cardTgtTerm.textContent = "NO EXISTE UN EQUIVALENTE REGISTRADO";
             this.cardType.textContent = "NIVEL DE PRECISIÓN: NULO";
-            this.cardDistance.textContent = "DISTANCIA: 55 AÑOS";
-            this.cardExplanationContainer.classList.remove('hidden');
-            this.cardExplanation.textContent = `El término "${query}" no posee una correspondencia registrada en las cuatro traducciones del dispositivo.`;
+            this.cardExplanationContainer.classList.add('hidden');
+            this.cardExplanation.textContent = "";
             this.cardStatus.textContent = "REGISTRO TENTATIVO // SIN EQUIVALENCIA";
         }
     }
 
     addMemoryItem(query, result, sourceYear, targetYear) {
+        if (!this.memoryList) return;
+
         const emptyMsg = this.memoryList.querySelector('.empty-memory');
         if (emptyMsg) emptyMsg.remove();
 
