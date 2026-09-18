@@ -29,36 +29,28 @@ export class UI {
     }
 
     updateDirectionUI(sourceYear) {
-    const srcStamp = document.getElementById('src-stamp');
-    const tgtStamp = document.getElementById('tgt-stamp');
+        if (sourceYear === 1969) {
+            this.srcYearEl.textContent = "1969";
+            this.srcLocEl.textContent = "CAMBRIDGE (Borges mayor)";
+            this.tgtYearEl.textContent = "1914";
+            this.tgtLocEl.textContent = "GINEBRA (Borges joven)";
+            this.boxSource.setAttribute('data-year', '1969');
+            this.boxTarget.setAttribute('data-year', '1914');
+            this.catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
+        } else {
+            this.srcYearEl.textContent = "1914";
+            this.srcLocEl.textContent = "GINEBRA (Borges joven)";
+            this.tgtYearEl.textContent = "1969";
+            this.tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
+            this.boxSource.setAttribute('data-year', '1914');
+            this.boxTarget.setAttribute('data-year', '1969');
+            this.catalogSourceLabel.textContent = "1914 — GINEBRA";
+        }
 
-    if (sourceYear === 1969) {
-        this.srcYearEl.textContent = "1969";
-        this.srcLocEl.textContent = "CAMBRIDGE (Borges mayor)";
-        this.tgtYearEl.textContent = "1914";
-        this.tgtLocEl.textContent = "GINEBRA (Borges joven)";
-        this.boxSource.setAttribute('data-year', '1969');
-        this.boxTarget.setAttribute('data-year', '1914');
-        this.catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
-
-        if (srcStamp) srcStamp.src = "borges-viejo.jpg";
-        if (tgtStamp) tgtStamp.src = "borges-joven.jpg";
-    } else {
-        this.srcYearEl.textContent = "1914";
-        this.srcLocEl.textContent = "GINEBRA (Borges joven)";
-        this.tgtYearEl.textContent = "1969";
-        this.tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
-        this.boxSource.setAttribute('data-year', '1914');
-        this.boxTarget.setAttribute('data-year', '1969');
-        this.catalogSourceLabel.textContent = "1914 — GINEBRA";
-
-        if (srcStamp) srcStamp.src = "borges-joven.jpg";
-        if (tgtStamp) tgtStamp.src = "borges-viejo.jpg";
+        // Reset visual de ficha
+        this.placeholder.classList.remove('hidden');
+        this.card.classList.add('hidden');
     }
-
-    this.placeholder.classList.remove('hidden');
-    this.card.classList.add('hidden');
-}
 
     renderCatalog(sourceYear, onSelectCallback) {
         this.catalogGrid.innerHTML = "";
