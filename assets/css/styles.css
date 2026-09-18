@@ -48,13 +48,15 @@ body {
     flex-direction: column;
 }
 
-/* PORTADA */
+/* PORTADA CON IMAGEN DE FONDO CORREGIDA */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(rgba(245, 244, 239, 0.85), rgba(245, 244, 239, 0.85)), 
-                url('../real.jpg') no-repeat center center;
+    background: linear-gradient(rgba(245, 244, 239, 0.88), rgba(245, 244, 239, 0.88)), 
+                url('../real.jpg') no-repeat center center,
+                url('../../real.jpg') no-repeat center center,
+                url('real.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -97,7 +99,6 @@ body {
     flex-direction: column;
 }
 
-/* Tipografía idéntica para ambos años */
 .intro-1914 .year-label, .intro-1969 .year-label {
     font-family: var(--font-serif);
     font-size: 2.8rem;
@@ -145,7 +146,7 @@ body {
     background: var(--accent-red);
 }
 
-/* APP PRINCIPAL */
+/* HEADER APP */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -220,7 +221,6 @@ body {
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .box-source .year, .box-target .year {
@@ -248,7 +248,7 @@ body {
     transform: rotate(180deg);
 }
 
-/* CONTROLES */
+/* CONTROLES TRADUCCIÓN */
 .input-wrapper {
     display: flex;
     gap: 0.5rem;
@@ -298,9 +298,9 @@ body {
     color: var(--bg-main);
 }
 
-/* FICHA RESULTADO */
+/* FICHA Y TRADUCCIÓN LINEAL CORREGIDA */
 .translation-display {
-    min-height: 250px;
+    min-height: 220px;
     margin-bottom: 3rem;
 }
 
@@ -331,17 +331,26 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.term-title {
-    font-size: 2rem;
-    font-weight: 500;
-    margin-top: 0.2rem;
+/* Líneas idénticas para Origen y Destino */
+.term-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.term-value {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-main);
 }
 
 .frontier-transition-visual {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 .transition-line {
@@ -359,24 +368,20 @@ body {
     color: var(--accent-red);
 }
 
-.term-result {
-    font-size: 1.8rem;
-    color: var(--accent-blue);
-    margin-top: 0.2rem;
-}
-
 .card-explanation {
     margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    padding-top: 1.2rem;
+    border-top: 1px dashed var(--border-color);
 }
 
 .card-explanation p {
     font-size: 0.95rem;
     line-height: 1.7;
     margin-top: 0.4rem;
+    color: var(--text-main);
 }
 
+/* MEMORIA */
 .memory-section {
     border-top: 1px solid var(--border-color);
     padding-top: 2rem;
@@ -410,10 +415,10 @@ body {
     font-family: var(--font-mono);
 }
 
-/* LECTURA DEL CUENTO COMPLETO */
+/* LECTURA DEL CUENTO MEJORADA */
 .story-article {
     background: var(--bg-card);
-    padding: 3rem 2.5rem;
+    padding: 4rem 3.5rem;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
@@ -421,43 +426,32 @@ body {
 .story-header {
     text-align: center;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .story-header h2 {
     font-family: var(--font-serif);
-    font-size: 2.8rem;
-    font-weight: 400;
-}
-
-.story-author {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .story-body p {
     font-family: var(--font-serif);
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.9;
+    margin-bottom: 1.8rem;
     text-align: justify;
-    text-indent: 1.5rem;
-}
-
-.story-body p:first-of-type {
-    text-indent: 0;
+    color: #222222;
 }
 
 .story-end {
     text-align: center !important;
-    text-indent: 0 !important;
     font-family: var(--font-mono) !important;
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     color: var(--text-muted);
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .concept-article h2 {
@@ -469,19 +463,28 @@ body {
 .editorial-quote {
     border-left: 2px solid var(--accent-red);
     padding-left: 1.2rem;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    line-height: 1.7;
 }
 
 .editorial-quote cite {
     display: block;
     font-style: normal;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.disclaimer-text {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    font-style: italic;
 }
 
 .app-footer {
@@ -505,6 +508,5 @@ body {
     .semiosphere-selector { grid-template-columns: 1fr; }
     .btn-swap { margin: 0 auto; transform: rotate(90deg); }
     .app-header { flex-direction: column; gap: 1rem; text-align: center; }
-    .story-article { padding: 1.5rem 1rem; }
-    .story-body p { text-indent: 0; }
+    .story-article { padding: 2rem 1.2rem; }
 }
