@@ -3,70 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traductor Semiótico — Borges</title>
-    <link rel="stylesheet" href="CSS STYLE.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>TRADUCTOR — De una semiosfera a otra</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-    <!-- PORTADA DE INICIO -->
-    <section id="screen-intro">
-        <div class="intro-header">
-            <span class="sys-tag">DISPOSITIVO SEMIÓTICO INTERACTIVO</span>
-            <h1 class="intro-title">TRADUCTOR</h1>
-            <p class="intro-subtitle">De una semiosfera a otra</p>
+    <!-- PORTADA / INTRODUCCIÓN MINIMALISTA -->
+    <section id="screen-intro" class="screen active">
+        <div class="intro-overlay"></div>
+        
+        <div class="intro-container">
+            <header class="intro-header">
+                <span class="sys-meta">DISPOSITIVO SEMIÓTICO INTERACTIVO</span>
+                <h1 class="main-title">TRADUCTOR</h1>
+                <p class="subtitle">De una semiosfera a otra</p>
+            </header>
+
+            <div class="intro-visual-zone">
+                <div class="intro-col intro-1914">
+                    <span class="year-label">1914</span>
+                    <span class="loc-label">GINEBRA</span>
+                </div>
+                
+                <div class="intro-frontier">
+                    <svg class="bench-icon" viewBox="0 0 100 40" fill="none" stroke="currentColor">
+                        <path class="bench-left" d="M10 30 H50 V15 H10 Z M20 30 V38 M40 30 V38" stroke-width="1.8" />
+                        <path class="bench-right" d="M50 30 H90 V15 H50 Z M60 30 V38 M80 30 V38" stroke-width="1.8" stroke-dasharray="2 2" />
+                        <line x1="50" y1="5" x2="50" y2="38" stroke="var(--accent-red)" stroke-width="1.5" />
+                    </svg>
+                    <span class="frontier-text">FRONTERA</span>
+                </div>
+
+                <div class="intro-col intro-1969">
+                    <span class="year-label">1969</span>
+                    <span class="loc-label">CAMBRIDGE</span>
+                </div>
+            </div>
+
+            <div class="intro-action">
+                <button id="btn-enter" class="btn-primary">ENTRAR AL DISPOSITIVO</button>
+                <div class="intro-authors">
+                    <span class="authors-names">Mateo Fuertes · Ariadna González · Gloria Ocariz</span>
+                    <span class="authors-sub">Trabajo evaluativo n° 2 — Lenguajes II</span>
+                </div>
+            </div>
         </div>
-
-        <div class="intro-hero">
-            <div class="intro-col">
-                <span class="year-label">1914</span>
-                <span class="loc-label">GINEBRA</span>
-            </div>
-
-            <div class="intro-frontier">
-                <img src="banco-rio.jpg" alt="Banco en el río" class="stamp-frontier">
-                <span class="frontier-text">FRONTERA</span>
-            </div>
-
-            <div class="intro-col">
-                <span class="year-label">1969</span>
-                <span class="loc-label">CAMBRIDGE</span>
-            </div>
-        </div>
-
-        <button id="btn-enter" class="btn-enter">ENTRAR AL DISPOSITIVO</button>
-
-        <footer class="intro-footer">
-            <p>Mateo Fuertes · Ariadna González · Gloria Ocariz</p>
-            <p>Trabajo evaluativo nº 2 – Lenguajes II</p>
-        </footer>
     </section>
 
-    <!-- APLICACIÓN PRINCIPAL (OCULTA AL PRINCIPIO) -->
-    <div id="app-container" class="hidden">
+    <!-- INTERFAZ PRINCIPAL -->
+    <section id="screen-app" class="screen">
+        
         <header class="app-header">
             <div class="brand">
-                <h2>TRADUCTOR</h2>
-                <span class="subbrand">Semiosferas: 1914 ↔ 1969</span>
+                <span class="brand-title">TRADUCTOR</span>
+                <span class="brand-sub">Semiosferas: 1914 ↔ 1969</span>
             </div>
-            <nav class="nav-tabs">
-                <button class="nav-btn active" data-tab="panel-translator">Traductor</button>
-                <button class="nav-btn" data-tab="panel-frontier">La Frontera</button>
-                <button class="nav-btn" data-tab="panel-story">El Otro</button>
+            <nav class="app-nav">
+                <button class="nav-link active" data-target="panel-translator">Traductor</button>
+                <button class="nav-link" data-target="panel-frontier">La Frontera</button>
+                <button class="nav-link" data-target="panel-about">El Otro</button>
             </nav>
         </header>
 
         <main class="app-main">
-            <!-- PESTAÑA 1: TRADUCTOR -->
-            <section id="panel-translator" class="tab-panel active">
+
+            <!-- VISTA: TRADUCTOR -->
+            <div id="panel-translator" class="tab-panel active">
+                
                 <div class="semiosphere-selector">
                     <div class="semiosphere-box box-source" id="box-source">
-                        <div class="semiosphere-info">
-                            <span class="sys-tag">SEMIOSFERA ORIGEN</span>
-                            <span class="year" id="src-year">1969</span>
-                            <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
-                        </div>
-                        <img id="src-stamp" src="borges-viejo.jpg" alt="Borges Viejo" class="stamp-img-raw">
+                        <span class="sys-tag">SEMIOSFERA ORIGEN</span>
+                        <span class="year" id="src-year">1969</span>
+                        <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
                     </div>
 
                     <button id="btn-swap" class="btn-swap" title="Invertir dirección de traducción">
@@ -76,114 +89,188 @@
                     </button>
 
                     <div class="semiosphere-box box-target" id="box-target">
-                        <div class="semiosphere-info">
-                            <span class="sys-tag">SEMIOSFERA DESTINO</span>
-                            <span class="year" id="tgt-year">1914</span>
-                            <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
-                        </div>
-                        <img id="tgt-stamp" src="borges-joven.jpg" alt="Borges Joven" class="stamp-img-raw">
+                        <span class="sys-tag">SEMIOSFERA DESTINO</span>
+                        <span class="year" id="tgt-year">1914</span>
+                        <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
                     </div>
                 </div>
 
-                <div class="catalog-section">
-                    <span class="catalog-label">CATÁLOGO DE TÉRMINOS (<span id="catalog-source-label">1969 — CAMBRIDGE</span>):</span>
-                    <div id="catalog-buttons" class="catalog-grid"></div>
-                </div>
+                <!-- CATÁLOGO CERRADO -->
+                <section class="catalog-section">
+                    <span class="catalog-title">CATÁLOGO DE TÉRMINOS DISPONIBLES (<span id="catalog-source-label">1969 — CAMBRIDGE</span>):</span>
+                    <div class="catalog-grid" id="catalog-grid">
+                        <!-- Generado por JS -->
+                    </div>
+                </section>
 
-                <div class="translation-output">
-                    <div id="card-placeholder" class="card-placeholder">
-                        <p>Selecciona un término del catálogo para iniciar el proceso de traducción semiótica.</p>
+                <!-- FICHA DE RESULTADO -->
+                <div class="translation-display" id="translation-display">
+                    
+                    <div class="display-placeholder" id="display-placeholder">
+                        <p>Seleccioná un elemento del catálogo para iniciar la traducción entre semiosferas.</p>
                     </div>
 
-                    <article id="translation-card" class="translation-card hidden">
+                    <div class="translation-card hidden" id="translation-card">
                         <div class="card-header">
-                            <span class="card-status">FICHA DE TRADUCCIÓN // SECUENCIA OK</span>
-                            <span class="card-distance">DISTANCIA: 55 AÑOS</span>
+                            <span class="sys-status" id="card-status">FICHA DE TRADUCCIÓN // SECUENCIA OK</span>
+                            <span class="sys-distance" id="card-distance">DISTANCIA: 55 AÑOS</span>
                         </div>
+
                         <div class="card-body">
-                            <div class="term-pair">
-                                <div class="term-box source">
-                                    <span class="term-label">ORIGEN</span>
-                                    <h3 id="card-src-term">-</h3>
-                                </div>
-                                <div class="term-arrow">→</div>
-                                <div class="term-box target">
-                                    <span class="term-label">DESTINO</span>
-                                    <h3 id="card-tgt-term">-</h3>
-                                </div>
+                            <div class="term-line">
+                                <span class="label">ORIGEN (<span id="card-src-year">1969</span>):</span>
+                                <span class="term-value" id="card-src-term">--</span>
                             </div>
-                            <div class="card-precision">
-                                <span>NIVEL DE PRECISIÓN:</span>
-                                <strong id="card-precision">-</strong>
+
+                            <div class="frontier-transition-visual">
+                                <div class="transition-line"></div>
+                                <span class="transition-badge" id="card-type">NIVEL DE PRECISIÓN: ALTO</span>
+                                <div class="transition-line"></div>
                             </div>
-                            <div class="card-explanation">
-                                <h4>ANÁLISIS SEMIÓTICO (CHOQUE DE SEMIOSFERAS):</h4>
-                                <p id="card-explanation">-</p>
+
+                            <div class="term-line">
+                                <span class="label">DESTINO (<span id="card-tgt-year">1914</span>):</span>
+                                <span class="term-value" id="card-tgt-term">--</span>
+                            </div>
+
+                            <div class="card-explanation hidden" id="card-explanation-container">
+                                <span class="explanation-label">EXPLICACIÓN:</span>
+                                <p id="card-explanation-text"></p>
                             </div>
                         </div>
-                    </article>
+                    </div>
+
                 </div>
 
-                <div class="history-section">
-                    <h3>MEMORIA DE TRADUCCIÓN (HISTORIAL)</h3>
-                    <ul id="history-list" class="history-list">
-                        <li class="empty-history">No se han realizado traducciones en esta sesión.</li>
-                    </ul>
-                </div>
-            </section>
+                <!-- MEMORIA DE TRADUCCIÓN -->
+                <section class="memory-section">
+                    <div class="memory-header">
+                        <h3>MEMORIA DE TRADUCCIÓN</h3>
+                        <span class="sys-meta">REGISTRO DE OPERACIONES REALIZADAS EN LA SESIÓN</span>
+                    </div>
+                    <div class="memory-list" id="memory-list">
+                        <p class="empty-memory">No hay traducciones registradas en la memoria de la sesión.</p>
+                    </div>
+                </section>
 
-            <!-- PESTAÑA 2: LA FRONTERA -->
-            <section id="panel-frontier" class="tab-panel">
-                <article class="editorial-article">
-                    <h2>La Frontera Semiótica en «El otro»</h2>
-                    <blockquote class="highlight-quote">
-                        "El encuentro se produce en un banco a orillas del río Charles, en Cambridge, en 1969; pero para el otro Borges ocurre a orillas del Rhône, en Ginebra, en 1914."
+            </div>
+
+            <!-- VISTA: LA FRONTERA -->
+            <div id="panel-frontier" class="tab-panel">
+                <article class="concept-article">
+                    <h2>La Frontera Semiótica</h2>
+                    <blockquote class="editorial-quote">
+                        «Medio siglo no pasa en vano. Bajo nuestra conversación de personas de miscelánea lectura y gustos diversos, comprendí que no podíamos entendernos. Éramos demasiado distintos y demasiado parecidos.»
+                        <cite>(Jorge Luis Borges, 1972)</cite>
                     </blockquote>
-                    <p>En la teoría semiótica de Yuri Lotman, la semiosfera es el espacio abstracto donde resultan posibles los procesos de transformación e intercambio de signos. En el cuento de Borges, la frontera no es simplemente una línea de división geográfica, sino un mecanismo de traducción bilingüe.</p>
-                    <p>El banco frente al agua actúa como el punto neutro de la frontera: un espacio liminal donde dos semiosferas separadas por 55 años de historia personal y geopolítica se solapan. La incomunicación parcial entre ambos personajes refleja la dificultad de traducir signos entre códigos culturales radicalmente distintos.</p>
+                    <p>En la semiótica de la cultura, la frontera es el filtro bilingüe a través del cual los mensajes de un sistema externo se codifican en la lengua del sistema interno. No es un límite rígido ni una 'tierra de nadie', sino la zona de mayor actividad creadora e inestabilidad del sentido.</p>
+                    <p>En el cuento <em>El otro</em>, el banco frente al río, que es simultáneamente el Charles en Cambridge (1969) y el Ródano en Ginebra (1914), puede analizarse como un espacio fronterizo. En este umbral, los dos lenguajes provenientes de tiempos históricos distintos entran en contacto y fricción. Sin embargo, la traducción plena entre ambas épocas resulta imposible.</p>
+                    <p class="disclaimer-text">Este dispositivo es solo tentativo, mas nunca absoluto.</p>
                 </article>
-            </section>
+            </div>
 
-            <!-- PESTAÑA 3: EL OTRO -->
-            <section id="panel-story" class="tab-panel">
-                <article class="story-container">
-                    <h2>El otro</h2>
-                    <p class="story-author">Jorge Luis Borges (1975)</p>
+            <!-- VISTA: EL OTRO (CUENTO COMPLETO) -->
+            <div id="panel-about" class="tab-panel">
+                <article class="story-article">
+                    <header class="story-header">
+                        <h2>El otro – Jorge Luis Borges</h2>
+                    </header>
                     <div class="story-body">
-                        <p>El hecho casi ocurrió en el mes de febrero de 1969, al norte de Boston, en Cambridge. No lo escribí inmediatamente porque mi primer propósito fue olvidarlo, para no perder la razón. Hoy, en 1972, pienso que si lo escribo, los otros lo leerán como un cuento y, con los años, lo será tal vez para mí.</p>
-                        <p>Sé que fue atroz mientras duró y más aún durante las insomnes noches que lo siguieron. Ello no significa que su relato pueda conmover a un tercero.</p>
-                        <p>Serían las diez de la mañana. Yo estaba sentado en un banco, frente al río Charles. A unos quinientos metros a mi derecha había un alto edificio, cuyo nombre no supe nunca. El agua gris llevaba largos trozos de hielo. El río me hizo pensar en el tiempo. La milenaria imagen de Heráclito. Yo había dormido bien; mi clase de la tarde anterior había logrado, creo, interesar a los alumnos. No había un alma a la vista.</p>
-                        <p>De pronto tuve la impresión (que los psicólogos llaman de déjà vu) de que alguien se había sentado a mi lado. Miré y reconocí a Jorge Luis Borges. Tenía unos veinte años y vestía un traje de casimir gris. Lo miré despacio; era evidente que no nos parecíamo en nada, salvo en los rasgos faciales, pero el otro parecía estar sumido en una distraída contemplación del agua. Llevaba en la mano izquierda un libro de versos.</p>
-                        <p>—Usted no está en Cambridge —le dije—. Está en Ginebra, en un banco, a unos pasos del Rhône.</p>
-                        <p>Me respondió con su voz, la voz que yo había tenido pero bastante más clara:</p>
-                        <p>—Efectivamente. Hace un momento que estoy aquí. Yo no recordaba esa voz pero la reconocí, era el tono de mi juventud.</p>
-                        <p>—Si de verdad estamos en dos épocas distintas —propuse—, esta conversación es un milagro o un sueño. ¿Cómo probar que no sueño?</p>
-                        <p>—Es fácil —contestó—. ¿Sabe usted qué día es hoy?</p>
-                        <p>—Hoy es catorce de febrero de 1969 —le dije.</p>
-                        <p>—No —respondió con una sonrisa leve—. Hoy es diecinueve de febrero de 1914. Yo vivo en el número 17 de la Rue Malagnou.</p>
-                        <p>Le dije que me llamaba Jorge Luis Borges y que me hallaba en una ciudad de Nueva Inglaterra. Le di algunos datos sobre nuestra familia y los nombres de nuestros profesores en Ginebra. El joven escuchaba con asombro pero no sin desconfianza.</p>
-                        <p>—Si yo lo estoy soñando —repuso—, es natural que usted sepa lo que yo sé. Sus datos no prueban nada.</p>
-                        <p>—Tiene razón —le respondí—. Pero si este encuentro es real y no un sueño de ninguno de los dos, el hecho de que yo sepa lo que usted vivirá en los años venideros debería bastar.</p>
-                        <p>Le hablé de la muerte de nuestro padre, de la ceguera que me sobrevendría con los años, de los viajes, de la gloria modesta y de la soledad. Le hablé de los libros que escribiríamos y de los poemas que habíamos de olvidar.</p>
-                        <p>—Es extraño —dijo pensativo—. Yo también estoy escribiendo un libro de poemas que se llamará Los ritmos rojos o Los himnos rojos. Quiero cantar la revolución rusa y la hermandad de los hombres.</p>
-                        <p>—Ese libro no se publicará nunca —le dije en voz baja—. Escribirás en cambio Fervor de Buenos Aires y El hacedor.</p>
-                        <p>Traté de mostrarle que el tiempo pasa, que los hombres cambian y que la juventud es un estado pasajero. Para probarle mi existencia real, saqué del bolsillo un billete de dólar americano y se lo mostré. Él sacó un franco suizo de su bolsillo.</p>
-                        <p>—Este billete de banco representa una cifra de mil novecientos sesenta y nueve —exliqué. El miró los números con cierta perplejidad.</p>
-                        <p>Nos quedamos en silencio. Me di cuenta de que para él, yo era un anciano a punto de morir, una sombra del futuro; para mí, él era la sombra de mi pasado. Ninguno de los dos podía penetrar del todo en la mente del otro.</p>
-                        <p>—Ha sido un encuentro raro —dijo finalmente el joven, poniéndose de pie—. Espero que vuelva a ocurrir.</p>
-                        <p>—Tal vez —respondí—. Pero si ocurre, será en otro sueño o en la memoria.</p>
-                        <p>El joven caminó hacia la calle y yo me quedé sentado en el banco de Cambridge, viendo alejarse a mi propia juventud en las calles de Ginebra. Aquel encuentro fue atroz porque nos demostró que somos dos y que somos uno mismo, atrapados en la trama del tiempo.</p>
+                        <p>El hecho ocurrió en el mes de febrero de 1969, al norte de Boston, en Cambridge. No lo escribí inmediatamente porque mi primer propósito fue olvidarlo, para no perder la razón. Ahora, en 1972, pienso que si lo escribo, los otros lo leerán como un cuento y, con los años, lo será tal vez para mí.</p>
+                        <p>Sé que fue casi atroz mientras duró y más aún durante las desveladas noches que lo siguieron. Ello no significa que su relato pueda conmover a un tercero.</p>
+                        <p>Serían las diez de la mañana. Yo estaba recostado en un banco, frente al río Charles. A unos quinientos metros a mi derecha había un alto edificio, cuyo nombre no supe nunca. El agua gris acarreaba largos trozos de hielo. Inevitablemente, el río hizo que yo pensara en el tiempo. La milenaria imagen de Heráclito. Yo había dormido bien; mi clase de la tarde anterior había logrado, creo, interesar a los alumnos. No había un alma a la vista.</p>
+                        <p>Sentí de golpe la impresión (que según los sicólogos corresponde a los estados de fatiga) de haber vivido ya aquel momento. En la otra punta de mi banco alguien se había sentado. Yo hubiera preferido estar solo, pero no quise levantarme en seguida, para no mostrarme incivil. El otro se había puesto a silbar. Fue entonces cuando ocurrió la primera de las muchas zozobras de esa mañana. Lo que silbaba, lo que trataba de silbar (nunca he sido muy entonado), era el estilo criollo de <em>La tapera</em> de Elías Regules. El estilo me retrajo a un patio, que ha desaparecido, y a la memoria de Álvaro Melián Lafinur, que hace tantos años ha muerto. Luego vinieron las palabras. Eran las de la décima del principio. La voz no era la de Álvaro, pero quería parecerse a la de Álvaro. La reconocí con horror.</p>
+                        <p>Me le acerqué y le dije:</p>
+                        <p>—Señor, ¿usted es oriental o argentino?</p>
+                        <p>—Argentino, pero desde el catorce vivo en Ginebra —fue la contestación.</p>
+                        <p>Hubo un silencio largo. Le pregunté:</p>
+                        <p>—¿En el número diecisiete de Malagnou, frente a la iglesia rusa?</p>
+                        <p>Me contestó que sí.</p>
+                        <p>—En tal caso —le dije resueltamente— usted se llama Jorge Luis Borges. Yo también soy Jorge Luis Borges. Estamos en 1969, en la ciudad de Cambridge.</p>
+                        <p>—No —me respondió con mi propia voz un poco lejana.</p>
+                        <p>Al cabo de un tiempo insistió:</p>
+                        <p>—Yo estoy aquí en Ginebra, en un banco, a unos pasos del Ródano. Lo raro es que nos parecemos, pero usted es mucho mayor, con la cabeza gris.</p>
+                        <p>Yo le contesté:</p>
+                        <p>—Puedo probarte que no miento. Voy a decirte cosas que no puede saber un desconocido. En casa hay un mate de plata con un pie de serpientes, que trajo del Perú nuestro bisabuelo. También hay una palangana de plata, que pendía del arzón. En el armario de tu cuarto hay dos filas de libros. Los tres volúmenes de <em>Las mil y una noches</em> de Lane con grabados en acero y notas en cuerpo menor entre capítulo y capítulo, el diccionario latino de Quicherat, la <em>Germania</em> de Tácito en latín y en la versión de Gordon, un <em>Don Quijote</em> de la casa Garnier, las <em>Tablas de sangre</em> de Rivera Indarte, con la dedicatoria del autor, el <em>Sartor Resartus</em> de Carlyle, una biografía de Amiel y, escondido detrás de los demás, un libro en rústica sobre las costumbres sexuales de los pueblos balcánicos. No he olvidado tampoco un atardecer en un primer piso de la plaza Dubourg.</p>
+                        <p>—Dufour —corrigió.</p>
+                        <p>—Está bien. Dufour. ¿Te basta con todo eso?</p>
+                        <p>—No —respondió—. Esas pruebas no prueban nada. Si yo lo estoy soñando, es natural que sepa lo que yo sé. Su catálogo prolijo es del todo vano.</p>
+                        <p>La objeción era justa. Le contesté:</p>
+                        <p>—Si esta mañana y este encuentro son sueños, cada uno de los dos tiene que pensar que el soñador es él. Tal vez dejemos de soñar, tal vez no. Nuestra evidente obligación, mientras tanto, es aceptar el sueño, como hemos aceptado el universo y haber sido engendrados y mirar con los ojos y respirar.</p>
+                        <p>—¿Y si el sueño durara? —dijo con ansiedad.</p>
+                        <p>Para tranquilizarlo y tranquilizarme, fingí un aplomo que ciertamente no sentía. Le dije:</p>
+                        <p>—Mi sueño ha durado ya setenta años. Al fin y al cabo, al recordarse, no hay persona que no se encuentre consigo misma. Es lo que nos está pasando ahora, salvo que somos dos. ¿No querés saber algo de mi pasado, que es el porvenir que te espera?</p>
+                        <p>Asintió sin una palabra. Yo proseguí un poco perdido:</p>
+                        <p>—Madre está sana y buena en su casa de Charcas y Maipú, en Buenos Aires, pero padre murió hace unos treinta años. Murió del corazón. Lo acabó una hemiplejia; la mano izquierda puesta sobre la mano derecha era como la mano de un niño sobre la mano de un gigante. Murió con impaciencia de morir, pero sin una queja. Nuestra abuela había muerto en la misma casa. Unos días antes del fin, nos llamó a todos y nos dijo: “Soy una mujer muy vieja, que está muriéndose muy despacio. Que nadie se alborote por una cosa tan común y corriente”. Norah, tu hermana, se casó y tiene dos hijos. A propósito, en casa, ¿cómo están?</p>
+                        <p>—Bien. Padre siempre con sus bromas contra la fe. Anoche dijo que Jesús era como los gauchos, que no quieren comprometerse, y que por eso predicaba en parábolas.</p>
+                        <p>Vaciló y me dijo: —¿Y usted?</p>
+                        <p>—No sé la cifra de los libros que escribirás, pero sé que son demasiados. Escribirás poesías que te darán un agrado no compartido y cuentos de índole fantástica. Darás clases como tu padre y como tantos otros de nuestra sangre.</p>
+                        <p>Me agradó que nada me preguntara sobre el fracaso o éxito de los libros. Cambié de tono y proseguí:</p>
+                        <p>—En lo que se refiere a la historia… Hubo otra guerra, casi entre los mismos antagonistas. Francia no tardó en capitular; Inglaterra y América libraron contra un dictador alemán, que se llamaba Hitler, la cíclica batalla de Waterloo. Buenos Aires, hacia mil novecientos cuarenta y seis, engendró otro Rosas, bastante parecido a nuestro pariente. El cincuenta y cinco, la provincia de Córdoba nos salvó, como antes Entre Ríos. Ahora, las cosas andan mal. Rusia está apoderándose del planeta; América, trabada por la superstición de la democracia, no se resuelve a ser un imperio. Cada día que pasa nuestro país es más provinciano. Más provinciano y más engreído, como si cerrara los ojos. No me sorprendería que la enseñanza del latín fuera reemplazada por la del guaraní.</p>
+                        <p>Noté que apenas me prestaba atención. El miedo elemental de lo imposible y sin embargo cierto lo amilanaba. Yo, que no he sido padre, sentí por ese pobre muchacho, más íntimo que un hijo de mi carne, una oleada de amor. Vi que apretaba entre las manos un libro. Le pregunté qué era.</p>
+                        <p>—<em>Los poseídos</em> o, según creo, <em>Los demonios</em> de Fyodor Dostoievski —me replicó no sin vanidad.</p>
+                        <p>—Se me ha desdibujado. ¿Qué tal es?</p>
+                        <p>No bien lo dije, sentí que la pregunta era una blasfemia.</p>
+                        <p>—El maestro ruso —dictaminó— ha penetrado más que nadie en los laberintos del alma eslava.</p>
+                        <p>Esa tentativa retórica me pareció una prueba de que se había serenado.</p>
+                        <p>Le pregunté qué otros volúmenes del maestro había recorrido. Enumeró dos o tres, entre ellos <em>El doble</em>.</p>
+                        <p>Le pregunté si al leerlos distinguía bien los personajes, como en el caso de Joseph Conrad, y si pensaba proseguir el examen de la obra completa.</p>
+                        <p>—La verdad es que no —me respondió con cierta sorpresa.</p>
+                        <p>Le pregunté qué estaba escribiendo y me dijo que preparaba un libro de versos que se titularía <em>Los himnos rojos</em>. También había pensado en <em>Los ritmos rojos</em>.</p>
+                        <p>—¿Por qué no? —le dije—. Podés alegar buenos antecedentes. El verso azul de Rubén Darío y la canción gris de Verlaine.</p>
+                        <p>Sin hacerme caso, me aclaró que su libro cantaría la fraternidad de todos los hombres. El poeta de nuestro tiempo no puede dar la espalda a su época.</p>
+                        <p>Me quedé pensando y le pregunté si verdaderamente se sentía hermano de todos. Por ejemplo, de todos los empresarios de pompas fúnebres, de todos los carteros, de todos los buzos, de todos los que viven en la acera de los números pares, de todos los afónicos, etcétera. Me dijo que su libro se refería a la gran masa de los oprimidos y parias.</p>
+                        <p>—Tu masa de oprimidos y de parias —le contesté— no es más que una abstracción. Solo los individuos existen, si es que existe alguien. El hombre de ayer no es el hombre de hoy sentenció algún griego. Nosotros dos, en este banco de Ginebra o de Cambridge, somos tal vez la prueba.</p>
+                        <p>Salvo en las severas páginas de la Historia, los hechos memorables prescinden de frases memorables. Un hombre a punto de morir quiere acordarse de un grabado entrevisto en la infancia; los soldados que están por entrar en la batalla hablan del barro o del sargento. Nuestra situación era única y, francamente, no estábamos preparados. Hablamos, fatalmente, de letras; temo no haber dicho otras cosas que las que suelo decir a los periodistas. Mi <em>alter ego</em> creía en la invención o descubrimiento de metáforas nuevas; yo en las que corresponden a afinidades íntimas y notorias y que nuestra imaginación ya ha aceptado. La vejez de los hombres y el ocaso, los sueños y la vida, el correr del tiempo y del agua. Le expuse esta opinión, que expondría en un libro años después.</p>
+                        <p>Casi no me escuchaba. De pronto dijo:</p>
+                        <p>—Si usted ha sido yo, ¿cómo explicar que haya olvidado su encuentro con un señor de edad que en 1918 le dijo que él también era Borges?</p>
+                        <p>No había pensado en esa dificultad. Le respondí sin convicción:</p>
+                        <p>—Tal vez el hecho fue tan extraño que traté de olvidarlo.</p>
+                        <p>Aventuró una tímida pregunta:</p>
+                        <p>—¿Cómo anda su memoria?</p>
+                        <p>Comprendí que para un muchacho que no había cumplido veinte años, un hombre de más de setenta era casi un muerto. Le contesté:</p>
+                        <p>—Suele parecerse al olvido, pero todavía encuentra lo que le encargan. Estudio anglosajón y no soy el último de la clase.</p>
+                        <p>Nuestra conversación ya había durado demasiado para ser la de un sueño. Una brusca idea se me ocurrió.</p>
+                        <p>—Yo te puedo probar inmediatamente —le dije— que no estás soñando conmigo. Oí bien este verso, que no has leído nunca, que yo recuerde.</p>
+                        <p>Lentamente entoné la famosa línea: <em>L’hydre-univers tordant son corps écaillé d’astres</em>.</p>
+                        <p>Sentí su casi temeroso estupor. Lo repitió en voz baja, saboreando cada resplandeciente palabra.</p>
+                        <p>—Es verdad —balbuceó—. Yo no podré nunca escribir una línea como esa. Hugo nos había unido.</p>
+                        <p>Antes, él había repetido con fervor, ahora lo recuerdo, aquella breve pieza en que Walt Whitman rememora una compartida noche ante el mar, en que fue realmente feliz.</p>
+                        <p>—Si Whitman la ha cantado —observé— es porque la deseaba y no sucedió. El poema gana si adivinamos que es la manifestación de un anhelo, no la historia de un hecho.</p>
+                        <p>Se quedó mirándome.</p>
+                        <p>—Usted no lo conoce —exclamó—. Whitman es incapaz de mentir.</p>
+                        <p>Medio siglo no pasa en vano. Bajo nuestra conversación de personas de miscelánea lectura y gustos diversos, comprendí que no podíamos entendernos. Éramos demasiado distintos y demasiado parecidos. No podíamos engañarnos, lo cual hace difícil el diálogo. Cada uno de los dos era el remedo caricaturesco del otro. La situación era harto anormal para durar mucho más tiempo. Aconsejar o discutir era inútil, porque su inevitable destino era ser el que soy.</p>
+                        <p>De pronto recordé una fantasía de Coleridge. Alguien sueña que cruza el paraíso y le dan como prueba una flor. Al despertarse, ahí está la flor.</p>
+                        <p>Se me ocurrió un artificio análogo. —Oí —le dije—, ¿tenés algún dinero?</p>
+                        <p>—Sí —me replicó—. Tengo unos veinte francos. Esta noche lo convidé a Simón Jichlinski en el Crocodile.</p>
+                        <p>—Dile a Simón que ejercerá la medicina en Carouge y que hará mucho bien… ahora, me das una de tus monedas.</p>
+                        <p>Sacó tres escudos de plata y unas piezas menores. Sin comprender me ofreció uno de los primeros.</p>
+                        <p>Yo le tendí uno de esos imprudentes billetes americanos que tienen muy diverso valor y el mismo tamaño. Lo examinó con avidez.</p>
+                        <p>—No puede ser —gritó—. Lleva la fecha de mil novecientos setenta y cuatro. (Meses después alguien me dijo que los billetes de banco no llevan fecha.)</p>
+                        <p>—Todo esto es un milagro —alcanzó a decir— y lo milagroso da miedo. Quienes fueron testigos de la resurrección de Lázaro habrán quedado horrorizados.</p>
+                        <p>No hemos cambiado nada, pensé. Siempre las referencias librescas. Hizo pedazos el billete y guardó la moneda.</p>
+                        <p>Yo resolví tirarla al río. El arco del escudo de plata perdiéndose en el río de plata hubiera conferido a mi historia una imagen vívida, pero la suerte no lo quiso.</p>
+                        <p>Respondí que lo sobrenatural, si ocurre dos veces, deja de ser aterrador. Le propuse que nos viéramos al día siguiente, en ese mismo banco que está en dos tiempos y en dos sitios.</p>
+                        <p>Asintió en el acto y me dijo, sin mirar el reloj, que se le había hecho tarde. Los dos mentíamos y cada cual sabía que su interlocutor estaba mintiendo. Le dije que iban a venir a buscarme.</p>
+                        <p>—¿A buscarlo? —me interrogó.</p>
+                        <p>—Sí. Cuando alcances mi edad habrás perdido casi por completo la vista. Verás el color amarillo y sombras y luces. No te preocupes. La ceguera gradual no es una cosa trágica. Es como un lento atardecer de verano.</p>
+                        <p>Nos despedimos sin habernos tocado. Al día siguiente no fui. El otro tampoco habrá ido.</p>
+                        <p>He cavilado mucho sobre este encuentro, que no he contado a nadie. Creo haber descubierto la clave. El encuentro fue real, pero el otro conversó conmigo en un sueño y fue así que pudo olvidarme; yo conversé con él en la vigilia y todavía me atormenta el recuerdo.</p>
+                        <p>El otro me soñó, pero no me soñó rigurosamente. Soñó, ahora lo entiendo, la imposible fecha en el dólar.</p>
+                        <p class="story-end">FIN</p>
                     </div>
                 </article>
-            </section>
+            </div>
+
         </main>
 
         <footer class="app-footer">
-            <p>Dispositivo Semiótico Interactivo — Taller de Lenguajes II</p>
+            <span>TRADUCTOR</span>
+            <span>TRABAJO PRÁCTICO CREATIVO - LENGUAJES II</span>
         </footer>
-    </div>
 
-    <script src="db.js"></script>
-    <script src="app js.js"></script>
+    </section>
+
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
