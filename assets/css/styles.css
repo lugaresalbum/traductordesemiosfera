@@ -1,1 +1,535 @@
+/* ==========================================================================
+   VARIABLES Y SISTEMA DE DISEÑO (ESTÉTICA EDITORIAL DUAL)
+   ========================================================================== */
+:root {
+    /* Paleta Principal Editorial */
+    --bg-main: #f5f4ef;         /* Blanco roto / marfil cálido */
+    --bg-card: #ffffff;
+    --text-main: #1c1c1c;       /* Negro carbón */
+    --text-muted: #5a5a52;     /* Gris cálido */
+    --border-color: #d8d6cb;   /* Gris papel antiguo */
+    
+    --accent-red: #8c241c;      /* Bordó / Rojo editorial */
+    --accent-blue: #2c4251;     /* Azul grisáceo sobrio */
 
+    /* Fuentes */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+
+    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Utilidades Tipográficas */
+.sys-meta, .sys-tag, .sys-status, .sys-distance, .label, .explanation-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   PANTALLAS
+   ========================================================================== */
+.screen {
+    display: none;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- PORTADA / INTRO --- */
+#screen-intro {
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #f0eee6 0%, #f5f4ef 100%);
+}
+
+.intro-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.main-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin: 0.8rem 0 0.2rem;
+}
+
+.subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.intro-visual-zone {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+
+.intro-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.intro-1914 .year-label {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+}
+
+.intro-1969 .year-label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.loc-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.intro-frontier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bench-icon {
+    width: 70px;
+    height: 30px;
+    color: var(--text-main);
+}
+
+.frontier-text {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-red);
+    letter-spacing: 0.15em;
+}
+
+.btn-primary, .btn-action {
+    background: var(--text-main);
+    color: var(--bg-main);
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary:hover, .btn-action:hover {
+    background: var(--accent-red);
+}
+
+/* ==========================================================================
+   APP PRINCIPAL & HEADER
+   ========================================================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.brand-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-right: 0.8rem;
+}
+
+.brand-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.app-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    transition: var(--transition-smooth);
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--text-main);
+    border-bottom: 2px solid var(--accent-red);
+}
+
+.app-main {
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* ==========================================================================
+   SELECTOR DE SEMIOSFERA (1914 / 1969)
+   ========================================================================== */
+.semiosphere-selector {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.semiosphere-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Estilo 1914: Serif Editorial */
+.box-source .year, .box-target .year {
+    font-size: 1.8rem;
+    margin: 0.2rem 0;
+}
+
+.semiosphere-box[data-year="1914"] .year {
+    font-family: var(--font-serif);
+}
+
+/* Estilo 1969: Sans Racional */
+.semiosphere-box[data-year="1969"] .year {
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+
+.btn-swap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-swap:hover {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   FORMULARIO Y BUSCADOR
+   ========================================================================== */
+.input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#term-input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+}
+
+#term-input:focus {
+    border-color: var(--text-main);
+}
+
+.quick-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.tag-label {
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+}
+
+.tag-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.tag-btn:hover {
+    background: var(--text-main);
+    color: var(--bg-main);
+}
+
+/* ==========================================================================
+   FICHA EDITORIAL DE RESULTADO (TRANSLATION CARD)
+   ========================================================================== */
+.translation-display {
+    min-height: 280px;
+    margin-bottom: 3rem;
+}
+
+.display-placeholder {
+    border: 1px dashed var(--border-color);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.translation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--text-main);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    position: relative;
+    animation: fadeIn 0.4s var(--transition-smooth);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.term-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+
+.frontier-transition-visual {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.transition-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.transition-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.8rem;
+    color: var(--accent-red);
+}
+
+.term-result {
+    font-size: 1.6rem;
+    color: var(--accent-blue);
+    margin-top: 0.2rem;
+}
+
+.card-meta {
+    margin: 1.5rem 0;
+    padding: 0.8rem;
+    background: var(--bg-main);
+    font-size: 0.85rem;
+}
+
+.card-explanation p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 0.4rem;
+}
+
+/* ANOMALÍA CONCEPTUAL (CASO DÓLAR 1974) */
+.translation-card.anomaly-active {
+    border: 2px solid var(--accent-red);
+    background: #fffdfd;
+}
+
+.translation-card.anomaly-active .term-result {
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   MEMORIA DE TRADUCCIÓN
+   ========================================================================== */
+.memory-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.memory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.memory-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+}
+
+.memory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.memory-item {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   ARTÍCULOS CONCEPTUALES
+   ========================================================================== */
+.concept-article h2 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.editorial-quote {
+    border-left: 2px solid var(--accent-red);
+    padding-left: 1.2rem;
+    margin: 1.5rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.editorial-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.concept-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+/* ==========================================================================
+   FOOTER & RESPONSIVE
+   ========================================================================== */
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 680px) {
+    .semiosphere-selector {
+        grid-template-columns: 1fr;
+    }
+    .btn-swap {
+        margin: 0 auto;
+        transform: rotate(90deg);
+    }
+    .concept-grid {
+        grid-template-columns: 1fr;
+    }
+    .app-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
