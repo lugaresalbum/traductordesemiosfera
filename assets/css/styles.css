@@ -1,305 +1,691 @@
-/* ===================================================
-   VARIABLES GLOBALES Y CONFIGURACIÓN BASE
-   =================================================== */
+/* ==========================================
+   VARIABLES Y ESTILOS BASE
+   ========================================== */
 :root {
-    --bg-color: #f4f1ea;
-    --card-bg: #fdfbf7;
-    --text-color: #2b2b2b;
-    --text-muted: #666059;
-    --border-color: #d8d2c6;
-    --accent-red: #8b2626;
-    --font-mono: 'Courier New', Courier, monospace;
-    --font-serif: 'Georgia', serif;
-    --transition-smooth: all 0.3s ease;
+    --bg-main: #0d0e10;
+    --bg-card: #141619;
+    --bg-card-hover: #1c1f24;
+    --border-color: #2a2e35;
+    --border-focus: #4a505b;
+    
+    --text-main: #e6e8ec;
+    --text-muted: #8b929e;
+    --text-dim: #5a606b;
+    
+    --accent-gold: #c9a959;
+    --accent-gold-dim: rgba(201, 169, 89, 0.15);
+    
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.35s ease;
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-main);
+    color: var(--text-main);
     font-family: var(--font-serif);
-    margin: 0;
-    padding: 0;
+    font-size: 18px;
     line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ===================================================
-   1. PANTALLA DE INICIO / HERO SCREEN
-   =================================================== */
-.screen-container {
+/* ==========================================
+   PANTALLAS / PESTAÑAS
+   ========================================== */
+.screen {
+    display: none;
+    min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ==========================================
+   PORTADA / INTRODUCCIÓN
+   ========================================== */
+#screen-intro {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: radial-gradient(circle at center, #181a1f 0%, #080809 100%);
+}
+
+.intro-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.sys-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent-gold);
+    margin-top: 0.5rem;
+}
+
+.intro-visual-zone {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
+    gap: 2rem;
+    width: 100%;
+    margin: 1rem 0;
 }
 
-.hero-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 40px;
-    max-width: 550px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-radius: 4px;
+.intro-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.hero-card h1 {
-    font-size: 2.5rem;
-    color: var(--accent-red);
-    margin: 10px 0;
-    letter-spacing: 2px;
-}
-
-.hero-subtitle {
+.year-label {
     font-family: var(--font-mono);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.loc-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
 }
 
-.btn-primary {
-    background: var(--accent-red);
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
+.intro-frontier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.frontier-text {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-primary {
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    padding: 1rem 2.5rem;
     cursor: pointer;
-    transition: var(--transition-smooth);
-    margin-top: 15px;
+    transition: all var(--transition-normal);
 }
 
 .btn-primary:hover {
-    background: #6a1c1c;
+    background: var(--accent-gold);
+    color: var(--bg-main);
+    box-shadow: 0 0 20px rgba(201, 169, 89, 0.3);
 }
 
-/* ===================================================
-   2. ESTRUCTURA Y NAVEGACIÓN
-   =================================================== */
-.app-layout {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.main-nav {
+.intro-authors {
+    margin-top: 1.5rem;
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
-.nav-btn {
-    background: transparent;
-    border: none;
+.authors-names {
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    padding: 8px 16px;
-    cursor: pointer;
     color: var(--text-muted);
-    transition: var(--transition-smooth);
 }
 
-.nav-btn.active, .nav-btn:hover {
-    color: var(--accent-red);
-    font-weight: bold;
+.authors-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
 }
 
-/* ===================================================
-   3. SELECTOR DE SEMIOSFERAS Y ESTAMPILLES
-   =================================================== */
-.semiosphere-selector {
+/* ==========================================
+   ESTILO ESTAMPITAS SEMIÓTICAS / VINTAGE
+   ========================================== */
+.stamp-frame {
+    background: #ffffff;
+    padding: 5px;
+    border: 2px dashed var(--border-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.stamp-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(30%) grayscale(20%) contrast(95%);
+    transition: filter 0.3s ease;
+}
+
+.stamp-frame:hover .stamp-img {
+    filter: sepia(0%) grayscale(0%) contrast(100%);
+}
+
+.stamp-bench {
+    width: 90px;
+    height: 65px;
+    margin-bottom: 0.4rem;
+    transform: rotate(-2deg);
+}
+
+.stamp-bench:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.stamp-mini {
+    width: 65px;
+    height: 80px;
+    flex-shrink: 0;
+    margin-left: 0.8rem;
+}
+
+.box-source .stamp-mini {
+    transform: rotate(1.5deg);
+}
+
+.box-target .stamp-mini {
+    transform: rotate(-1.5deg);
+}
+
+/* ==========================================
+   APP HEADER Y NAV
+   ========================================== */
+.app-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 15px 20px;
-    margin-bottom: 25px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.semiosphere-box {
-    display: flex;
     align-items: center;
-    gap: 15px;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--border-color);
+    background: #090a0c;
 }
 
-.box-content {
+.brand {
     display: flex;
     flex-direction: column;
 }
 
-.sys-tag {
+.brand-title {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--text-main);
+}
+
+.brand-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--text-muted);
-    letter-spacing: 1px;
 }
 
-.year {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--accent-red);
-}
-
-.loc {
-    font-size: 0.85rem;
-    font-style: italic;
-}
-
-.btn-swap {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+.app-nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-smooth);
+    gap: 1rem;
 }
 
-.btn-swap:hover {
-    background: var(--border-color);
-    transform: rotate(180deg);
-}
-
-/* ESTILOS DE ESTAMPILLA */
-.stamp-frame {
-    position: relative;
-    display: inline-block;
-    padding: 5px;
-    background: #fcf9f5;
-    border: 1px dashed var(--border-color);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    background-image: radial-gradient(circle, transparent 3px, #fcf9f5 3px);
-    background-size: 8px 8px;
-    background-position: -4px -4px;
-    flex-shrink: 0;
-}
-
-.stamp-frame img {
-    display: block;
-    width: 65px;
-    height: 80px;
-    object-fit: cover;
-    filter: sepia(0.4) contrast(1.1) grayscale(0.1);
-    border: 1px solid rgba(0,0,0,0.15);
-}
-
-.stamp-frame::after {
-    content: "ARCHIVUM";
-    position: absolute;
-    bottom: 2px;
-    right: -4px;
-    font-family: var(--font-mono);
-    font-size: 0.5rem;
-    color: var(--accent-red);
-    border: 1px solid var(--accent-red);
-    border-radius: 50%;
-    padding: 2px 4px;
-    transform: rotate(-12deg);
-    background: rgba(253, 251, 247, 0.85);
-    pointer-events: none;
-}
-
-.stamp-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.55rem;
-    text-align: center;
+.nav-link {
+    background: transparent;
+    border: none;
     color: var(--text-muted);
-    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    border-bottom: 2px solid transparent;
 }
 
-/* ===================================================
-   4. SECCIONES / PESTAÑAS
-   =================================================== */
+.nav-link:hover {
+    color: var(--text-main);
+}
+
+.nav-link.active {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+/* ==========================================
+   MAIN CONTENT & TABS
+   ========================================== */
+.app-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
 .tab-panel {
     display: none;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 4px;
 }
 
 .tab-panel.active {
     display: block;
 }
 
-/* PANEL TRADUCTOR */
-.translator-container {
+/* ==========================================
+   TRADUCTOR: SELECTOR DE SEMIOSFERAS
+   ========================================== */
+.semiosphere-selector {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
 }
 
-.input-panel, .output-panel {
+.semiosphere-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-text-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
-    border: 1px solid var(--border-color);
-    background: #faf8f5;
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    padding: 10px;
-    resize: vertical;
-}
-
-.translation-result {
-    min-height: 150px;
-    padding: 10px;
-    background: #faf8f5;
-    border: 1px dashed var(--border-color);
-}
-
-.placeholder-text {
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-/* PESTAÑA FRONTERA */
-.frontier-evidence {
-    float: right;
-    margin: 0 0 15px 20px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.02);
-    border-left: 2px solid var(--accent-red);
-    max-width: 180px;
-}
-
-.frontier-evidence .stamp-frame img {
-    width: 150px;
-    height: 105px;
-}
-
-.evidence-caption {
+.sys-tag {
     font-family: var(--font-mono);
     font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+}
+
+.semiosphere-box .year {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    line-height: 1.2;
+}
+
+.semiosphere-box .loc {
+    font-size: 0.95rem;
     color: var(--text-muted);
-    margin-top: 8px;
-    line-height: 1.3;
+}
+
+.btn-swap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--accent-gold);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-swap:hover {
+    border-color: var(--accent-gold);
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   CATÁLOGO
+   ========================================== */
+.catalog-section {
+    margin-bottom: 3rem;
+}
+
+.catalog-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem;
+}
+
+.catalog-card-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.catalog-card-btn:hover {
+    border-color: var(--border-focus);
+    background: var(--bg-card-hover);
+}
+
+.catalog-card-btn.active {
+    border-color: var(--accent-gold);
+    background: var(--accent-gold-dim);
+    color: var(--accent-gold);
+}
+
+/* ==========================================
+   FICHA DE RESULTADO
+   ========================================== */
+.translation-display {
+    min-height: 220px;
+    margin-bottom: 3rem;
+}
+
+.display-placeholder {
+    border: 1px dashed var(--border-color);
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.translation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    border-radius: 4px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.sys-status {
+    color: var(--accent-gold);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.term-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.term-line .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.term-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.frontier-transition-visual {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.transition-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.transition-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    background: #090a0c;
+    border: 1px solid var(--border-color);
+    color: var(--accent-gold);
+    border-radius: 12px;
+}
+
+.card-explanation {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.explanation-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.card-explanation p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+   MEMORIA DE TRADUCCIÓN
+   ========================================== */
+.memory-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.memory-header {
+    margin-bottom: 1rem;
+}
+
+.memory-header h3 {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+
+}
+
+.memory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.empty-memory {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+.memory-item {
+    background: #090a0c;
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.memory-item strong {
+    color: var(--text-main);
+}
+
+/* ==========================================
+   SECCIONES TEXTUALES: FRONTERA Y CUENTO
+   ========================================== */
+.concept-article, .story-article {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 3rem;
+    border-radius: 4px;
+}
+
+.concept-article h2, .story-article h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
 }
 
 .editorial-quote {
     font-style: italic;
-    border-left: 3px solid var(--accent-red);
-    margin: 15px 0;
-    padding-left: 15px;
+    font-size: 1.25rem;
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: var(--text-main);
+}
+
+.editorial-quote cite {
+    display: block;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
     color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-style: normal;
+}
+
+.concept-article p {
+    margin-bottom: 1.2rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.disclaimer-text {
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    color: var(--text-dim) !important;
+    margin-top: 2rem;
+    text-transform: uppercase;
+}
+
+.story-body p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    color: var(--text-main);
+    font-size: 1.15rem;
+}
+
+.story-end {
+    text-align: center !important;
+    font-family: var(--font-mono);
+    letter-spacing: 0.3em;
+    color: var(--accent-gold);
+    margin-top: 3rem !important;
+}
+
+/* ==========================================
+   FOOTER Y RESPONSIVE
+   ========================================== */
+.app-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: #090a0c;
+}
+
+@media (max-width: 680px) {
+    .semiosphere-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-swap {
+        margin: 0 auto;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .intro-visual-zone {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .main-title {
+        font-size: 2.8rem;
+    }
+
+    .concept-article, .story-article {
+        padding: 1.5rem;
+    }
 }
