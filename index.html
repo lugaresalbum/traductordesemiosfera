@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <!-- PORTADA / INTRODUCCIÓN -->
+    <!-- PORTADA / INTRODUCCIÓN MINIMALISTA -->
     <section id="screen-intro" class="screen active">
         <div class="intro-overlay"></div>
         
@@ -31,10 +31,11 @@
                 </div>
                 
                 <div class="intro-frontier">
-                    <!-- Estampita del Banco frente al río -->
-                    <div class="stamp-frame stamp-bench">
-                        <img src="banco-rio.jpg" alt="Banco frente al río" class="stamp-img">
-                    </div>
+                    <svg class="bench-icon" viewBox="0 0 100 40" fill="none" stroke="currentColor">
+                        <path class="bench-left" d="M10 30 H50 V15 H10 Z M20 30 V38 M40 30 V38" stroke-width="1.8" />
+                        <path class="bench-right" d="M50 30 H90 V15 H50 Z M60 30 V38 M80 30 V38" stroke-width="1.8" stroke-dasharray="2 2" />
+                        <line x1="50" y1="5" x2="50" y2="38" stroke="var(--accent-red)" stroke-width="1.5" />
+                    </svg>
                     <span class="frontier-text">FRONTERA</span>
                 </div>
 
@@ -75,16 +76,10 @@
             <div id="panel-translator" class="tab-panel active">
                 
                 <div class="semiosphere-selector">
-                    <!-- Caja Origen -->
-                    <div class="semiosphere-box box-source" id="box-source" data-year="1969">
-                        <div class="box-text-content">
-                            <span class="sys-tag">SEMIOSFERA ORIGEN</span>
-                            <span class="year" id="src-year">1969</span>
-                            <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
-                        </div>
-                        <div class="stamp-frame stamp-mini">
-                            <img id="src-stamp" src="borges-viejo.jpg" alt="Estampita Origen" class="stamp-img">
-                        </div>
+                    <div class="semiosphere-box box-source" id="box-source">
+                        <span class="sys-tag">SEMIOSFERA ORIGEN</span>
+                        <span class="year" id="src-year">1969</span>
+                        <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
                     </div>
 
                     <button id="btn-swap" class="btn-swap" title="Invertir dirección de traducción">
@@ -93,16 +88,10 @@
                         </svg>
                     </button>
 
-                    <!-- Caja Destino -->
-                    <div class="semiosphere-box box-target" id="box-target" data-year="1914">
-                        <div class="box-text-content">
-                            <span class="sys-tag">SEMIOSFERA DESTINO</span>
-                            <span class="year" id="tgt-year">1914</span>
-                            <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
-                        </div>
-                        <div class="stamp-frame stamp-mini">
-                            <img id="tgt-stamp" src="borges-joven.jpg" alt="Estampita Destino" class="stamp-img">
-                        </div>
+                    <div class="semiosphere-box box-target" id="box-target">
+                        <span class="sys-tag">SEMIOSFERA DESTINO</span>
+                        <span class="year" id="tgt-year">1914</span>
+                        <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
                     </div>
                 </div>
 
@@ -110,7 +99,7 @@
                 <section class="catalog-section">
                     <span class="catalog-title">CATÁLOGO DE TÉRMINOS DISPONIBLES (<span id="catalog-source-label">1969 — CAMBRIDGE</span>):</span>
                     <div class="catalog-grid" id="catalog-grid">
-                        <!-- Generado dinámicamente -->
+                        <!-- Generado por JS -->
                     </div>
                 </section>
 
@@ -184,67 +173,90 @@
             <div id="panel-about" class="tab-panel">
                 <article class="story-article">
                     <header class="story-header">
-                        <h2>El otro – JORGE LUIS BORGES</h2>
+                        <h2>El otro – Jorge Luis Borges</h2>
                     </header>
                     <div class="story-body">
                         <p>El hecho ocurrió en el mes de febrero de 1969, al norte de Boston, en Cambridge. No lo escribí inmediatamente porque mi primer propósito fue olvidarlo, para no perder la razón. Ahora, en 1972, pienso que si lo escribo, los otros lo leerán como un cuento y, con los años, lo será tal vez para mí.</p>
-                        <p>Sé que fue casi atroz mientras duró y más aún durante las desveladas noches que lo siguieron. Eso no significa que su relato pueda conmover a un tercero.</p>
-                        <p>Serían las diez de la mañana. Yo estaba sentado en un banco, frente al río Charles. A mi derecha había un alto edificio, cuya sombra no alcanzaba a tocarme. El río arrastraba helados trozos de hielo. Inevitablemente, el río me hizo pensar en el tiempo. La milenaria imagen de Heráclito. Yo había dormido bien; mi clase de la tarde anterior había logrado, creo, interesar a los alumnos. No había un alma a la vista.</p>
-                        <p>De pronto, tuve la impresión (que los psicólogos explican por la fatiga) de haber vivido ya aquel momento. En el otro extremo de mi banco alguien se había sentado. Yo hubiera preferido estar solo, pero no quise levantarme en seguida, para no mostrarme descortés. El otro se había puesto a silbar. Fue entonces cuando ocurrió la primera de las dos zozobras de esa mañana. Lo que silbaba era la entonación patria de La tapera, de Elías Regules. El estilo me retrajo a un patio, que ha desaparecido, y a la memoria de Álvaro Melián Lafinur, que hace tantos años ha muerto. Luego vinieron las palabras. Era las de la estrofa inicial. La voz no era la de Álvaro, pero quería parecerse a la de Álvaro. La reconocí con horror.</p>
+                        <p>Sé que fue casi atroz mientras duró y más aún durante las desveladas noches que lo siguieron. Ello no significa que su relato pueda conmover a un tercero.</p>
+                        <p>Serían las diez de la mañana. Yo estaba recostado en un banco, frente al río Charles. A unos quinientos metros a mi derecha había un alto edificio, cuyo nombre no supe nunca. El agua gris acarreaba largos trozos de hielo. Inevitablemente, el río hizo que yo pensara en el tiempo. La milenaria imagen de Heráclito. Yo había dormido bien; mi clase de la tarde anterior había logrado, creo, interesar a los alumnos. No había un alma a la vista.</p>
+                        <p>Sentí de golpe la impresión (que según los sicólogos corresponde a los estados de fatiga) de haber vivido ya aquel momento. En la otra punta de mi banco alguien se había sentado. Yo hubiera preferido estar solo, pero no quise levantarme en seguida, para no mostrarme incivil. El otro se había puesto a silbar. Fue entonces cuando ocurrió la primera de las muchas zozobras de esa mañana. Lo que silbaba, lo que trataba de silbar (nunca he sido muy entonado), era el estilo criollo de <em>La tapera</em> de Elías Regules. El estilo me retrajo a un patio, que ha desaparecido, y a la memoria de Álvaro Melián Lafinur, que hace tantos años ha muerto. Luego vinieron las palabras. Eran las de la décima del principio. La voz no era la de Álvaro, pero quería parecerse a la de Álvaro. La reconocí con horror.</p>
                         <p>Me le acerqué y le dije:</p>
                         <p>—Señor, ¿usted es oriental o argentino?</p>
-                        <p>—Argentino, pero desde el catorce vivo en Ginebra —fue la respuesta.</p>
-                        <p>Hubo un largo silencio. Le pregunté:</p>
-                        <p>—¿En el número tres de Malagnou, frente a la iglesia rusa?</p>
+                        <p>—Argentino, pero desde el catorce vivo en Ginebra —fue la contestación.</p>
+                        <p>Hubo un silencio largo. Le pregunté:</p>
+                        <p>—¿En el número diecisiete de Malagnou, frente a la iglesia rusa?</p>
                         <p>Me contestó que sí.</p>
                         <p>—En tal caso —le dije resueltamente— usted se llama Jorge Luis Borges. Yo también soy Jorge Luis Borges. Estamos en 1969, en la ciudad de Cambridge.</p>
                         <p>—No —me respondió con mi propia voz un poco lejana.</p>
                         <p>Al cabo de un tiempo insistió:</p>
-                        <p>—Yo estoy aquí en Ginebra, sentado en un banco, a unos pasos del Ródano. Lo raro es que nos parecemos, pero usted es mucho mayor, tiene la cabeza gris.</p>
+                        <p>—Yo estoy aquí en Ginebra, en un banco, a unos pasos del Ródano. Lo raro es que nos parecemos, pero usted es mucho mayor, con la cabeza gris.</p>
                         <p>Yo le contesté:</p>
-                        <p>—Puedo probarte que no miento. Te diré cosas que no puede saber un desconocido. En casa hay un mate de plata con pie de serpientes, que trajo de Perú nuestro bisabuelo. También hay un palangana de plata, que se colgaba del arzón. En el armario de tu cuarto, hay dos filas de libros. Los tres volúmenes de Lane de Las mil y una noches, con grabados en acero y notas entre paréntesis al fin de cada capítulo, el diccionario de Quicherat, la Biographia Literaria de Coleridge, el Don Quijote de Garnier, los versos de Rivera Indarte, con dedicatoria del autor, el Sartor Resartus de Carlyle, la biografía de Haydon y otros tres volúmenes en rústica. No has olvidado el primer volumen de la historia de los francos de Tacitus; pero no hablemos de libros. Tampoco has olvidado que una tarde, en el piso bajo de la calle Charcas, nos bañamos en la misma tina.</p>
-                        <p>Él me escuchaba con atención. Al fin dijo:</p>
-                        <p>—Usted me ha dicho todo eso y usted no puede ignorarlo. Pero todo eso ocurre en un sueño y en un sueño no se puede pensar. Un sueño puede durar años, o un instante. Si este encuentro es un sueño, lo es para los dos. ¿Cómo es posible que soñemos el mismo sueño?</p>
-                        <p>—Es verdad —dije—. Pero no te preocupes. Lo importante es saber que la experiencia no es imposible y que somos dos personas que se parecen y que están juntas. ¿Y si este sueño no fuera un sueño, sino una visión de lo que vendrá?</p>
-                        <p>El otro no respondió nada. Yo continué:</p>
-                        <p>—Si esta mañana es un sueño, cada uno de los dos tiene que pensar que el soñador es él. Tal vez dejamos de soñar, tal vez no. Nuestro deber, entre tanto, es aceptar el sueño, como hemos aceptado el universo y el haber sido engendrados y el ver con los ojos y el respirar.</p>
+                        <p>—Puedo probarte que no miento. Voy a decirte cosas que no puede saber un desconocido. En casa hay un mate de plata con un pie de serpientes, que trajo del Perú nuestro bisabuelo. También hay una palangana de plata, que pendía del arzón. En el armario de tu cuarto hay dos filas de libros. Los tres volúmenes de <em>Las mil y una noches</em> de Lane con grabados en acero y notas en cuerpo menor entre capítulo y capítulo, el diccionario latino de Quicherat, la <em>Germania</em> de Tácito en latín y en la versión de Gordon, un <em>Don Quijote</em> de la casa Garnier, las <em>Tablas de sangre</em> de Rivera Indarte, con la dedicatoria del autor, el <em>Sartor Resartus</em> de Carlyle, una biografía de Amiel y, escondido detrás de los demás, un libro en rústica sobre las costumbres sexuales de los pueblos balcánicos. No he olvidado tampoco un atardecer en un primer piso de la plaza Dubourg.</p>
+                        <p>—Dufour —corrigió.</p>
+                        <p>—Está bien. Dufour. ¿Te basta con todo eso?</p>
+                        <p>—No —respondió—. Esas pruebas no prueban nada. Si yo lo estoy soñando, es natural que sepa lo que yo sé. Su catálogo prolijo es del todo vano.</p>
+                        <p>La objeción era justa. Le contesté:</p>
+                        <p>—Si esta mañana y este encuentro son sueños, cada uno de los dos tiene que pensar que el soñador es él. Tal vez dejemos de soñar, tal vez no. Nuestra evidente obligación, mientras tanto, es aceptar el sueño, como hemos aceptado el universo y haber sido engendrados y mirar con los ojos y respirar.</p>
                         <p>—¿Y si el sueño durara? —dijo con ansiedad.</p>
-                        <p>Para tranquilizarlo y tranquilizarme, fingí una certeza que ciertamente no tenía.</p>
-                        <p>—Mi sueño ha durado ya setenta años. Al fin y al cabo, al recordarse, no hay persona que no se encuentre consigo misma. Es lo que nos está pasando ahora, salvo que somos dos. ¿No quieres saber algo de mi pasado, que es el porvenir que te espera?</p>
-                        <p>Asintió sin palabra. Yo proseguí, un poco perdido:</p>
-                        <p>—Madre está sana y buena en su casa de Charcas y Maipú, en Buenos Aires, pero Padre murió hace unos treinta años. Murió del corazón. Lo mató una hemiplegia; la mano izquierda colocada sobre la mano derecha era como la mano de un niño sobre la mano de un gigante. Murió con la impaciencia de morir, pero sin una queja. Nuestra abuela había muerto en la misma casa. Unos días antes de la fin, nos llamó a todos y nos dijo: «Soy una mujer muy vieja que está muriendo muy despacio. Que nadie se alborote o se preocupe por una cosa tan común y corriente». Norah, tu hermana, se casó y tiene dos hijos. Por cierto, ¿en casa cómo están?</p>
-                        <p>—Bien. Padre con sus bromas contra la fe. Anoche dijo que Jesús era como los gauchos, que no querían comprometerse con los doctores, y que por eso hablaba en parábolas.</p>
-                        <p>Vaciló y me dijo:</p>
-                        <p>—¿Y usted?</p>
-                        <p>—No sé el número de libros que escribirás, pero sé que son demasiados. Escribirás poesías que te darán un agrado no compartido y cuentos de índole fantástica. Enseñarás como tu padre y como tantos otros de nuestra sangre.</p>
-                        <p>Me alegró que no me preguntara por el éxito o el fracaso de los libros. Cambié de tono y proseguí:</p>
-                        <p>—En cuanto a la historia... Hubo otra guerra, casi entre los mismos antagonistas. Francia no tardó en capitular; Inglaterra y Rusia combatieron contra un discordia alemana llamada Hitler, que era la trágica figura de un fantasma. Buenos Aires, hacia 1946, engendró otro Rosas, bastante parecido a nuestro pariente. El 55, la provincia de Córdoba nos salvó, como antes Entre Ríos. Ahora las cosas van mal. Rusia está apoderándose del planeta; América, trabada por la superstición de la democracia, no se decide a ser un imperio. Cada día que pasa nuestro país es más provinciano. Más provinciano y más engreído, como si cerrara los ojos. No me sorprendería que la enseñanza del latín fuera reemplazada por la del guaraní.</p>
-                        <p>Me pareció que no me escuchaba. El miedo servil de que le ocurriera algo en el futuro lo tenía paralizado. Él no había sufrido y no sabía que el futuro, una vez que se ha hecho presente, es inocuo. Mi presencia, que era su futuro, lo abrumaba.</p>
-                        <p>Trataba de cambiar de tema.</p>
-                        <p>—¿Qué estás escribiendo?</p>
-                        <p>—Un libro de versos que se titulará Los ritmos rojos. También he pensado en Los himnos rojos.</p>
-                        <p>—¿Por qué no? —le dije—. Puedes alegar buenos antecedentes. El canto azul de Darío y la canción gris de Verlaine.</p>
-                        <p>Sin hacerme caso, me explicó que su libro cantaría la fraternidad de todos los hombres. El poeta de nuestro tiempo no puede dar la espalda a su época.</p>
-                        <p>Me quedé pensando y le pregunté si se sentía verdaderamente hermano de todos. Por ejemplo, de todos los empresarios de pompas fúnebres, de todos los carteros, de todos los buzos, de todos los que viven en la acera de los números pares, de todos los disfónicos, etc. Me dijo que su libro se refería a la gran masa de los oprimidos y parias.</p>
-                        <p>—Tu masa de oprimidos y parias —le respondí— no es más que una abstracción. Sólo existen los individuos, si es que existe alguien. El hombre de ayer no es el hombre de hoy, sentenció algún griego. Nosotros dos, en este banco de Cambridge o de Ginebra, somos tal vez la prueba.</p>
-                        <p>Salvo en las severas páginas de la historia, los hechos memorables prescinden de frases memorables. Un hombre a punto de morir quiere acordarse de un grabado atisbado en la infancia; los soldados en la víspera de la batalla hablan de la lluvia o de su sargento. Nuestra situación era única y, francamente, no estábamos preparados. Hablamos, como es fatal, de literatura; no digo de las cosas que se dicen a los periodistas. Le hablé de Whitman, cuyo nombre evocó con entusiasmo. Me dijo:</p>
-                        <p>—Walt Whitman es el único poeta del mundo. Se ha cantado a sí mismo y ha cantado a la humanidad entera.</p>
-                        <p>Le dije que Whitman era un gran poeta, pero que era también un mito que él mismo había creado con calculada sabiduría. Le pregunté si no le parecía que Dostoievski, con su turbulencia y su piedad, era más profundo.</p>
-                        <p>—No —me contestó—. Dostoievski ha deformado la visión del hombre. Sólo Whitman ha visto al hombre en su plenitud.</p>
-                        <p>Borges joven no quería ceder. Yo no quise discutir más.</p>
-                        <p>—Si nos hemos encontrado esta mañana —le dije— es porque dos personas de mi edad y de la tuya se han sentado en un banco frente a un río. La coincidencia es inverosímil, pero ha ocurrido.</p>
-                        <p>Saqué del bolsillo un billete de dólar y se lo mostré.</p>
-                        <p>—Mira esto. Es un dólar estadounidense. Tiene la efigie de Washington. Es el dinero de mi época.</p>
-                        <p>El otro lo tomó, lo examinó con curiosidad y luego lo rompió en pedazos.</p>
-                        <p>—No entiendo —dijo—. Esto no tiene valor en Ginebra.</p>
-                        <p>Saqué entonces una moneda de plata, un escudo suizo que conservaba como recuerdo.</p>
-                        <p>—Esto es tuyo —dije, entregándoselo.</p>
-                        <p>Él lo guardó en el bolsillo sin darme las gracias.</p>
-                        <p>Nos quedamos en silencio. Sentí que se levantaba. Me dijo:</p>
-                        <p>—Se está haciendo tarde. Tengo que irme.</p>
-                        <p>—Nos volveremos a ver —le dije.</p>
-                        <p>—Sí —respondió—. Tal vez en otro sueño.</p>
-                        <p>Se fue caminando a lo largo del Ródano. Yo me quedé en el banco de Cambridge, viendo correr el Charles. Cada uno de nosotros era el otro, pero ninguno era el verdadero.</p>
+                        <p>Para tranquilizarlo y tranquilizarme, fingí un aplomo que ciertamente no sentía. Le dije:</p>
+                        <p>—Mi sueño ha durado ya setenta años. Al fin y al cabo, al recordarse, no hay persona que no se encuentre consigo misma. Es lo que nos está pasando ahora, salvo que somos dos. ¿No querés saber algo de mi pasado, que es el porvenir que te espera?</p>
+                        <p>Asintió sin una palabra. Yo proseguí un poco perdido:</p>
+                        <p>—Madre está sana y buena en su casa de Charcas y Maipú, en Buenos Aires, pero padre murió hace unos treinta años. Murió del corazón. Lo acabó una hemiplejia; la mano izquierda puesta sobre la mano derecha era como la mano de un niño sobre la mano de un gigante. Murió con impaciencia de morir, pero sin una queja. Nuestra abuela había muerto en la misma casa. Unos días antes del fin, nos llamó a todos y nos dijo: “Soy una mujer muy vieja, que está muriéndose muy despacio. Que nadie se alborote por una cosa tan común y corriente”. Norah, tu hermana, se casó y tiene dos hijos. A propósito, en casa, ¿cómo están?</p>
+                        <p>—Bien. Padre siempre con sus bromas contra la fe. Anoche dijo que Jesús era como los gauchos, que no quieren comprometerse, y que por eso predicaba en parábolas.</p>
+                        <p>Vaciló y me dijo: —¿Y usted?</p>
+                        <p>—No sé la cifra de los libros que escribirás, pero sé que son demasiados. Escribirás poesías que te darán un agrado no compartido y cuentos de índole fantástica. Darás clases como tu padre y como tantos otros de nuestra sangre.</p>
+                        <p>Me agradó que nada me preguntara sobre el fracaso o éxito de los libros. Cambié de tono y proseguí:</p>
+                        <p>—En lo que se refiere a la historia… Hubo otra guerra, casi entre los mismos antagonistas. Francia no tardó en capitular; Inglaterra y América libraron contra un dictador alemán, que se llamaba Hitler, la cíclica batalla de Waterloo. Buenos Aires, hacia mil novecientos cuarenta y seis, engendró otro Rosas, bastante parecido a nuestro pariente. El cincuenta y cinco, la provincia de Córdoba nos salvó, como antes Entre Ríos. Ahora, las cosas andan mal. Rusia está apoderándose del planeta; América, trabada por la superstición de la democracia, no se resuelve a ser un imperio. Cada día que pasa nuestro país es más provinciano. Más provinciano y más engreído, como si cerrara los ojos. No me sorprendería que la enseñanza del latín fuera reemplazada por la del guaraní.</p>
+                        <p>Noté que apenas me prestaba atención. El miedo elemental de lo imposible y sin embargo cierto lo amilanaba. Yo, que no he sido padre, sentí por ese pobre muchacho, más íntimo que un hijo de mi carne, una oleada de amor. Vi que apretaba entre las manos un libro. Le pregunté qué era.</p>
+                        <p>—<em>Los poseídos</em> o, según creo, <em>Los demonios</em> de Fyodor Dostoievski —me replicó no sin vanidad.</p>
+                        <p>—Se me ha desdibujado. ¿Qué tal es?</p>
+                        <p>No bien lo dije, sentí que la pregunta era una blasfemia.</p>
+                        <p>—El maestro ruso —dictaminó— ha penetrado más que nadie en los laberintos del alma eslava.</p>
+                        <p>Esa tentativa retórica me pareció una prueba de que se había serenado.</p>
+                        <p>Le pregunté qué otros volúmenes del maestro había recorrido. Enumeró dos o tres, entre ellos <em>El doble</em>.</p>
+                        <p>Le pregunté si al leerlos distinguía bien los personajes, como en el caso de Joseph Conrad, y si pensaba proseguir el examen de la obra completa.</p>
+                        <p>—La verdad es que no —me respondió con cierta sorpresa.</p>
+                        <p>Le pregunté qué estaba escribiendo y me dijo que preparaba un libro de versos que se titularía <em>Los himnos rojos</em>. También había pensado en <em>Los ritmos rojos</em>.</p>
+                        <p>—¿Por qué no? —le dije—. Podés alegar buenos antecedentes. El verso azul de Rubén Darío y la canción gris de Verlaine.</p>
+                        <p>Sin hacerme caso, me aclaró que su libro cantaría la fraternidad de todos los hombres. El poeta de nuestro tiempo no puede dar la espalda a su época.</p>
+                        <p>Me quedé pensando y le pregunté si verdaderamente se sentía hermano de todos. Por ejemplo, de todos los empresarios de pompas fúnebres, de todos los carteros, de todos los buzos, de todos los que viven en la acera de los números pares, de todos los afónicos, etcétera. Me dijo que su libro se refería a la gran masa de los oprimidos y parias.</p>
+                        <p>—Tu masa de oprimidos y de parias —le contesté— no es más que una abstracción. Solo los individuos existen, si es que existe alguien. El hombre de ayer no es el hombre de hoy sentenció algún griego. Nosotros dos, en este banco de Ginebra o de Cambridge, somos tal vez la prueba.</p>
+                        <p>Salvo en las severas páginas de la Historia, los hechos memorables prescinden de frases memorables. Un hombre a punto de morir quiere acordarse de un grabado entrevisto en la infancia; los soldados que están por entrar en la batalla hablan del barro o del sargento. Nuestra situación era única y, francamente, no estábamos preparados. Hablamos, fatalmente, de letras; temo no haber dicho otras cosas que las que suelo decir a los periodistas. Mi <em>alter ego</em> creía en la invención o descubrimiento de metáforas nuevas; yo en las que corresponden a afinidades íntimas y notorias y que nuestra imaginación ya ha aceptado. La vejez de los hombres y el ocaso, los sueños y la vida, el correr del tiempo y del agua. Le expuse esta opinión, que expondría en un libro años después.</p>
+                        <p>Casi no me escuchaba. De pronto dijo:</p>
+                        <p>—Si usted ha sido yo, ¿cómo explicar que haya olvidado su encuentro con un señor de edad que en 1918 le dijo que él también era Borges?</p>
+                        <p>No había pensado en esa dificultad. Le respondí sin convicción:</p>
+                        <p>—Tal vez el hecho fue tan extraño que traté de olvidarlo.</p>
+                        <p>Aventuró una tímida pregunta:</p>
+                        <p>—¿Cómo anda su memoria?</p>
+                        <p>Comprendí que para un muchacho que no había cumplido veinte años, un hombre de más de setenta era casi un muerto. Le contesté:</p>
+                        <p>—Suele parecerse al olvido, pero todavía encuentra lo que le encargan. Estudio anglosajón y no soy el último de la clase.</p>
+                        <p>Nuestra conversación ya había durado demasiado para ser la de un sueño. Una brusca idea se me ocurrió.</p>
+                        <p>—Yo te puedo probar inmediatamente —le dije— que no estás soñando conmigo. Oí bien este verso, que no has leído nunca, que yo recuerde.</p>
+                        <p>Lentamente entoné la famosa línea: <em>L’hydre-univers tordant son corps écaillé d’astres</em>.</p>
+                        <p>Sentí su casi temeroso estupor. Lo repitió en voz baja, saboreando cada resplandeciente palabra.</p>
+                        <p>—Es verdad —balbuceó—. Yo no podré nunca escribir una línea como esa. Hugo nos había unido.</p>
+                        <p>Antes, él había repetido con fervor, ahora lo recuerdo, aquella breve pieza en que Walt Whitman rememora una compartida noche ante el mar, en que fue realmente feliz.</p>
+                        <p>—Si Whitman la ha cantado —observé— es porque la deseaba y no sucedió. El poema gana si adivinamos que es la manifestación de un anhelo, no la historia de un hecho.</p>
+                        <p>Se quedó mirándome.</p>
+                        <p>—Usted no lo conoce —exclamó—. Whitman es incapaz de mentir.</p>
+                        <p>Medio siglo no pasa en vano. Bajo nuestra conversación de personas de miscelánea lectura y gustos diversos, comprendí que no podíamos entendernos. Éramos demasiado distintos y demasiado parecidos. No podíamos engañarnos, lo cual hace difícil el diálogo. Cada uno de los dos era el remedo caricaturesco del otro. La situación era harto anormal para durar mucho más tiempo. Aconsejar o discutir era inútil, porque su inevitable destino era ser el que soy.</p>
+                        <p>De pronto recordé una fantasía de Coleridge. Alguien sueña que cruza el paraíso y le dan como prueba una flor. Al despertarse, ahí está la flor.</p>
+                        <p>Se me ocurrió un artificio análogo. —Oí —le dije—, ¿tenés algún dinero?</p>
+                        <p>—Sí —me replicó—. Tengo unos veinte francos. Esta noche lo convidé a Simón Jichlinski en el Crocodile.</p>
+                        <p>—Dile a Simón que ejercerá la medicina en Carouge y que hará mucho bien… ahora, me das una de tus monedas.</p>
+                        <p>Sacó tres escudos de plata y unas piezas menores. Sin comprender me ofreció uno de los primeros.</p>
+                        <p>Yo le tendí uno de esos imprudentes billetes americanos que tienen muy diverso valor y el mismo tamaño. Lo examinó con avidez.</p>
+                        <p>—No puede ser —gritó—. Lleva la fecha de mil novecientos setenta y cuatro. (Meses después alguien me dijo que los billetes de banco no llevan fecha.)</p>
+                        <p>—Todo esto es un milagro —alcanzó a decir— y lo milagroso da miedo. Quienes fueron testigos de la resurrección de Lázaro habrán quedado horrorizados.</p>
+                        <p>No hemos cambiado nada, pensé. Siempre las referencias librescas. Hizo pedazos el billete y guardó la moneda.</p>
+                        <p>Yo resolví tirarla al río. El arco del escudo de plata perdiéndose en el río de plata hubiera conferido a mi historia una imagen vívida, pero la suerte no lo quiso.</p>
+                        <p>Respondí que lo sobrenatural, si ocurre dos veces, deja de ser aterrador. Le propuse que nos viéramos al día siguiente, en ese mismo banco que está en dos tiempos y en dos sitios.</p>
+                        <p>Asintió en el acto y me dijo, sin mirar el reloj, que se le había hecho tarde. Los dos mentíamos y cada cual sabía que su interlocutor estaba mintiendo. Le dije que iban a venir a buscarme.</p>
+                        <p>—¿A buscarlo? —me interrogó.</p>
+                        <p>—Sí. Cuando alcances mi edad habrás perdido casi por completo la vista. Verás el color amarillo y sombras y luces. No te preocupes. La ceguera gradual no es una cosa trágica. Es como un lento atardecer de verano.</p>
+                        <p>Nos despedimos sin habernos tocado. Al día siguiente no fui. El otro tampoco habrá ido.</p>
+                        <p>He cavilado mucho sobre este encuentro, que no he contado a nadie. Creo haber descubierto la clave. El encuentro fue real, pero el otro conversó conmigo en un sueño y fue así que pudo olvidarme; yo conversé con él en la vigilia y todavía me atormenta el recuerdo.</p>
+                        <p>El otro me soñó, pero no me soñó rigurosamente. Soñó, ahora lo entiendo, la imposible fecha en el dólar.</p>
                         <p class="story-end">FIN</p>
                     </div>
                 </article>
@@ -259,8 +271,6 @@
 
     </section>
 
-    <script src="assets/js/db.js"></script>
-    <script src="assets/js/UI.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>
