@@ -594,3 +594,55 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* REGLA DE OCULTAMIENTO DE PANTALLAS */
+.hidden {
+    display: none !important;
+}
+
+/* CORRECCIÓN ESTÉTICA DE LA PORTADA */
+#screen-intro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #1a1816;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+    background-size: 20px 20px;
+}
+
+/* ALINEACIÓN EN UNA SOLA FILA HORIZONTAL DE 1914 - ESTAMPILLA - 1969 */
+.intro-hero {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3rem !important;
+    width: 100%;
+    max-width: 750px;
+    margin: 2rem 0;
+}
+
+.intro-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.intro-frontier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ESTAMPILLA BANCO EN LA PORTADA */
+.stamp-frontier {
+    max-height: 100px;
+    width: auto;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 5px;
+    background: #11100f;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
