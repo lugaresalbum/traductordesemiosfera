@@ -1,3 +1,5 @@
+import { TRANSLATION_DB } from './db.js';
+
 export class UI {
     constructor() {
         this.srcYearEl = document.getElementById('src-year');
@@ -7,6 +9,9 @@ export class UI {
         
         this.boxSource = document.getElementById('box-source');
         this.boxTarget = document.getElementById('box-target');
+
+        this.catalogSourceLabel = document.getElementById('catalog-source-label');
+        this.catalogGrid = document.getElementById('catalog-grid');
 
         this.placeholder = document.getElementById('display-placeholder');
         this.card = document.getElementById('translation-card');
@@ -20,7 +25,6 @@ export class UI {
         this.cardExplanation = document.getElementById('card-explanation-text');
         this.cardStatus = document.getElementById('card-status');
 
-        this.tagRiver = document.getElementById('tag-river');
         this.memoryList = document.getElementById('memory-list');
     }
 
@@ -32,11 +36,7 @@ export class UI {
             this.tgtLocEl.textContent = "GINEBRA (Borges joven)";
             this.boxSource.setAttribute('data-year', '1969');
             this.boxTarget.setAttribute('data-year', '1914');
-            
-            if (this.tagRiver) {
-                this.tagRiver.textContent = "Río Charles";
-                this.tagRiver.setAttribute('data-term', 'Río Charles');
-            }
+            this.catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
         } else {
             this.srcYearEl.textContent = "1914";
             this.srcLocEl.textContent = "GINEBRA (Borges joven)";
@@ -44,45 +44,56 @@ export class UI {
             this.tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
             this.boxSource.setAttribute('data-year', '1914');
             this.boxTarget.setAttribute('data-year', '1969');
-            
-            if (this.tagRiver) {
-                this.tagRiver.textContent = "Río Ródano";
-                this.tagRiver.setAttribute('data-term', 'Río Ródano');
-            }
+            this.catalogSourceLabel.textContent = "1914 — GINEBRA";
         }
+
+        // Reset visual de ficha
+        this.placeholder.classList.remove('hidden');
+        this.card.classList.add('hidden');
     }
 
-    renderCard(result, query, sourceYear, targetYear) {
+    renderCatalog(sourceYear, onSelectCallback) {
+        this.catalogGrid.innerHTML = "";
+
+        const availableEntries = TRANSLATION_DB.filter(entry => entry.sourceYear === sourceYear);
+
+        availableEntries.forEach(entry => {
+            const btn = document.createElement('button');
+            btn.className = 'catalog-card-btn';
+            btn.textContent = entry.term;
+
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.catalog-card-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                onSelectCallback(entry);
+            });
+
+            this.catalogGrid.appendChild(btn);
+        });
+    }
+
+    renderCard(result, sourceYear, targetYear) {
         this.placeholder.classList.add('hidden');
         this.card.classList.remove('hidden');
 
         this.cardSrcYear.textContent = sourceYear;
         this.cardTgtYear.textContent = targetYear;
-        this.cardSrcTerm.textContent = query.toUpperCase();
+        this.cardSrcTerm.textContent = result.term.toUpperCase();
+        this.cardTgtTerm.textContent = result.translation;
+        this.cardType.textContent = result.type;
 
-        if (result) {
-            this.cardTgtTerm.textContent = result.translation;
-            this.cardType.textContent = result.type;
-
-            if (result.explanation && result.explanation.trim() !== "") {
-                this.cardExplanationContainer.classList.remove('hidden');
-                this.cardExplanation.textContent = result.explanation;
-            } else {
-                this.cardExplanationContainer.classList.add('hidden');
-                this.cardExplanation.textContent = "";
-            }
-
-            this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
+        if (result.explanation && result.explanation.trim() !== "") {
+            this.cardExplanationContainer.classList.remove('hidden');
+            this.cardExplanation.textContent = result.explanation;
         } else {
-            this.cardTgtTerm.textContent = "NO EXISTE UN EQUIVALENTE REGISTRADO";
-            this.cardType.textContent = "NIVEL DE PRECISIÓN: NULO";
             this.cardExplanationContainer.classList.add('hidden');
             this.cardExplanation.textContent = "";
-            this.cardStatus.textContent = "REGISTRO TENTATIVO // SIN EQUIVALENCIA";
         }
+
+        this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
     }
 
-    addMemoryItem(query, result, sourceYear, targetYear) {
+    addMemoryItem(entry) {
         if (!this.memoryList) return;
 
         const emptyMsg = this.memoryList.querySelector('.empty-memory');
@@ -90,13 +101,10 @@ export class UI {
 
         const item = document.createElement('div');
         item.className = 'memory-item';
-        
-        const targetText = result ? result.translation : "SIN EQUIVALENTE";
-        const typeText = result ? result.type : "PRECISIÓN: NULA";
 
         item.innerHTML = `
-            <span><strong>${query.toUpperCase()}</strong> (${sourceYear} → ${targetYear})</span>
-            <span>${targetText} [${typeText}]</span>
+            <span><strong>${entry.term.toUpperCase()}</strong> (${entry.sourceYear} → ${entry.targetYear})</span>
+            <span>${entry.translation} [${entry.type}]</span>
         `;
 
         this.memoryList.prepend(item);
