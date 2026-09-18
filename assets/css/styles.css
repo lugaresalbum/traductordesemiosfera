@@ -38,6 +38,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Control estricto de imágenes para que no se desborden nunca */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ==========================================
    PANTALLAS / PESTAÑAS
    ========================================== */
@@ -210,8 +217,8 @@ body {
 }
 
 .stamp-bench {
-    width: 90px;
-    height: 65px;
+    width: 120px;
+    height: 90px;
     margin-bottom: 0.4rem;
     transform: rotate(-2deg);
 }
@@ -550,7 +557,6 @@ body {
     font-family: var(--font-mono);
     font-size: 0.9rem;
     letter-spacing: 0.1em;
-
 }
 
 .memory-list {
@@ -688,4 +694,5 @@ body {
     .concept-article, .story-article {
         padding: 1.5rem;
     }
+}
 }
