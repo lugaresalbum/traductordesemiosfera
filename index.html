@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRADUCTOR — De una semiosfera a otra</title>
+    
+    <!-- Tipografías de Google Fonts: Serif editorial, Sans-serif modernista y Monospace técnica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
 
+    <!-- PANTALLA 1: PORTADA / INTRODUCCIÓN -->
+    <section id="screen-intro" class="screen active">
+        <div class="intro-container">
+            <header class="intro-header">
+                <span class="sys-meta">DISPOSITIVO SEMIÓTICO INTERACTIVO // BASADO EN J. L. BORGES Y Y. LOTMAN</span>
+                <h1 class="main-title">TRADUCTOR</h1>
+                <p class="subtitle">De una semiosfera a otra</p>
+            </header>
+
+            <div class="intro-visual-zone">
+                <div class="intro-col intro-1914">
+                    <span class="year-label">1914</span>
+                    <span class="loc-label">GINEBRA</span>
+                </div>
+                
+                <div class="intro-frontier">
+                    <!-- Ilustración lineal del banco dividida por la frontera -->
+                    <svg class="bench-icon" viewBox="0 0 100 40" fill="none" stroke="currentColor">
+                        <path class="bench-left" d="M10 30 H50 V15 H10 Z M20 30 V38 M40 30 V38" stroke-width="1.5" />
+                        <path class="bench-right" d="M50 30 H90 V15 H50 Z M60 30 V38 M80 30 V38" stroke-width="1.5" stroke-dasharray="2 2" />
+                        <line x1="50" y1="5" x2="50" y2="38" stroke="var(--accent-red)" stroke-width="1" />
+                    </svg>
+                    <span class="frontier-text">FRONTERA</span>
+                </div>
+
+                <div class="intro-col intro-1969">
+                    <span class="year-label">1969</span>
+                    <span class="loc-label">CAMBRIDGE</span>
+                </div>
+            </div>
+
+            <div class="intro-action">
+                <p class="prompt-text">¿Desde dónde estás hablando?</p>
+                <button id="btn-enter" class="btn-primary">ENTRAR AL DISPOSITIVO</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANTALLA 2: INTERFAZ PRINCIPAL DEL TRADUCTOR -->
+    <section id="screen-app" class="screen">
+        
+        <!-- HEADER SUPERIOR -->
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-title">TRADUCTOR</span>
+                <span class="brand-sub">Semiosferas: 1914 ↔ 1969</span>
+            </div>
+            <nav class="app-nav">
+                <button class="nav-link active" data-target="panel-translator">Traductor</button>
+                <button class="nav-link" data-target="panel-frontier">La Frontera</button>
+                <button class="nav-link" data-target="panel-about">El Otro</button>
+            </nav>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL REORGANIZABLE -->
+        <main class="app-main">
+
+            <!-- VISTA: TRADUCTOR -->
+            <div id="panel-translator" class="tab-panel active">
+                
+                <!-- CONTROL DE DIRECCIÓN DE LA SEMIOSFERA -->
+                <div class="semiosphere-selector">
+                    <div class="semiosphere-box box-source" id="box-source">
+                        <span class="sys-tag">ORIGEN</span>
+                        <span class="year" id="src-year">1969</span>
+                        <span class="loc" id="src-loc">CAMBRIDGE (Borges mayor)</span>
+                    </div>
+
+                    <button id="btn-swap" class="btn-swap" title="Invertir dirección de traducción">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                            <path d="M7 16l-4-4m0 0l4-4m-4 4h18M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </button>
+
+                    <div class="semiosphere-box box-target" id="box-target">
+                        <span class="sys-tag">DESTINO</span>
+                        <span class="year" id="tgt-year">1914</span>
+                        <span class="loc" id="tgt-loc">GINEBRA (Borges joven)</span>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO DE BÚSQUEDA / TRADUCCIÓN -->
+                <div class="translation-controls">
+                    <div class="input-wrapper">
+                        <input type="text" id="term-input" placeholder="Escribí una palabra, objeto, concepto o experiencia..." autocomplete="off">
+                        <button id="btn-translate" class="btn-action">TRADUCIR</button>
+                    </div>
+
+                    <div class="quick-tags">
+                        <span class="tag-label">Opciones sugeridas:</span>
+                        <button class="tag-btn" data-term="Dólar">Dólar</button>
+                        <button class="tag-btn" data-term="Memoria">Memoria</button>
+                        <button class="tag-btn" data-term="Computadora">Computadora</button>
+                        <button class="tag-btn" data-term="Borges">Borges</button>
+                        <button class="tag-btn" data-term="Futuro">Futuro</button>
+                        <button class="tag-btn" data-term="Río">Río</button>
+                    </div>
+                </div>
+
+                <!-- CANVAS DE TRADUCCIÓN (EXPERIENCIA VISUAL / RESULTADO) -->
+                <div class="translation-display" id="translation-display">
+                    
+                    <div class="display-placeholder" id="display-placeholder">
+                        <p>Ingresá un término para iniciar el proceso de trasvasamiento entre espacios semióticos.</p>
+                    </div>
+
+                    <!-- FICHA EDITORIAL DE RESULTADO (GENERADA POR JS) -->
+                    <div class="translation-card hidden" id="translation-card">
+                        <div class="card-header">
+                            <span class="sys-status" id="card-status">FICHA DE TRADUCCIÓN // SECUENCIA OK</span>
+                            <span class="sys-distance" id="card-distance">DISTANCIA: 55 AÑOS</span>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="term-source-block">
+                                <span class="label">TÉRMINO EN ORIGEN (<span id="card-src-year">1969</span>):</span>
+                                <h2 class="term-title" id="card-src-term">COMPUTADORA</h2>
+                            </div>
+
+                            <div class="frontier-transition-visual">
+                                <div class="transition-line"></div>
+                                <span class="transition-badge" id="card-type">TRADUCCIÓN APROXIMADA</span>
+                                <div class="transition-line"></div>
+                            </div>
+
+                            <div class="term-target-block">
+                                <span class="label">RESULTADO EN DESTINO (<span id="card-tgt-year">1914</span>):</span>
+                                <h3 class="term-result" id="card-tgt-term">MÁQUINA ELECTRONICA DE CÁLCULO</h3>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">EQUIVALENCIA SEMIÓTICA:</span>
+                                    <span class="meta-value" id="card-equivalence">FUNCIONAL PARCIAL</span>
+                                </div>
+                            </div>
+
+                            <div class="card-explanation">
+                                <span class="explanation-label">ANÁLISIS DE TRADUCCIÓN EN LA SEMIOSFERA:</span>
+                                <p id="card-explanation-text">Explicación teórica aquí...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SECCIÓN: MEMORIA DE TRADUCCIÓN -->
+                <section class="memory-section">
+                    <div class="memory-header">
+                        <h3>MEMORIA DE TRADUCCIÓN</h3>
+                        <span class="sys-meta">REGISTRO DE OPERACIONES REALIZADAS EN LA SESIÓN</span>
+                    </div>
+                    <div class="memory-list" id="memory-list">
+                        <p class="empty-memory">No hay traducciones registradas en la memoria de la sesión.</p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- VISTA: LA FRONTERA (EXPLICACIÓN CONCEPTUAL VISUAL) -->
+            <div id="panel-frontier" class="tab-panel">
+                <article class="concept-article">
+                    <h2>La Frontera Semiótica</h2>
+                    <blockquote class="editorial-quote">
+                        «La frontera del espacio semiótico no es una línea abstracta, sino un mecanismo de traducción. Una frontera no solamente separa. También traduce.»
+                        <cite>— Yuri Lotman</cite>
+                    </blockquote>
+                    <p>En la semiótica de la cultura, la frontera es el filtro bilingüe a través del cual los mensajes de un sistema externo se codifican en la lengua del sistema interno. No es un límite rígido ni una 'tierra de nadie', sino la zona de mayor actividad creadora e inestabilidad del sentido.</p>
+                    <p>En el cuento <em>El otro</em>, el banco frente al río funciona como esa frontera física y conceptual. Un lado del banco está posado sobre el río Charles en Cambridge (1969); el otro lado, sobre el Ródano en Ginebra (1914). El diálogo entre ambos Borges dramatiza la fricción de traducir entre dos semiosferas distanciadas por más de medio siglo.</p>
+                </article>
+            </div>
+
+            <!-- VISTA: EL OTRO (SOBRE EL CUENTO) -->
+            <div id="panel-about" class="tab-panel">
+                <article class="concept-article">
+                    <h2>El Otro (1972) y Yuri Lotman</h2>
+                    <p>Publicado en <em>El libro de arena</em>, este cuento relata el encuentro de dos versiones de Jorge Luis Borges que se descubren sentadas en el mismo banco de madera. El anciano de 70 años sabe que habla con su pasado; el joven de 19 cree estar soñando a un viejo desconocido.</p>
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h3>1914 — Ginebra</h3>
+                            <p>Cultura textualizada, idealista y dogmática. Fe en metáforas nuevas, el verso compromiso y la fraternidad universal de <em>Los himnos rojos</em>.</p>
+                        </div>
+                        <div class="concept-card">
+                            <h3>1969 — Cambridge</h3>
+                            <p>Cultura gramaticalizada e incrédula. Conciencia de la relatividad del signo, resignación ante la ceguera y certeza de que solo los individuos existen.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </main>
+
+        <!-- FOOTER EDITORIAL -->
+        <footer class="app-footer">
+            <span>TRADUCTOR — De una semiosfera a otra</span>
+            <span>Semiótica de la Cultura &amp; Literatura Argentina</span>
+        </footer>
+
+    </section>
+
+    <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
