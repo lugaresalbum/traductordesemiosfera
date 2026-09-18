@@ -350,3 +350,17 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
+// CONTROL DE CAMBIO DE PANTALLA
+document.addEventListener('DOMContentLoaded', () => {
+    const btnEnter = document.getElementById('btn-enter');
+    const screenIntro = document.getElementById('screen-intro');
+    const appContainer = document.getElementById('app-container');
+
+    if (btnEnter) {
+        btnEnter.addEventListener('click', () => {
+            screenIntro.style.display = 'none';
+            appContainer.classList.remove('hidden');
+            window.scrollTo(0, 0); // Vuelve arriba de todo
+        });
+    }
+});
