@@ -53,8 +53,12 @@ body {
     align-items: center;
     padding: 2rem;
     position: relative;
-    background: #0a0a0a url('../image.jpg') no-repeat center center;
+    background-color: #0a0a0a;
+    background-image: url('../../image.jpg'), url('../image.jpg'), url('image.jpg'), url('/image.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
+
 }
 
 /* Capa de contraste oscuro suave para legibilidad del texto */
