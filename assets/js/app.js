@@ -182,7 +182,7 @@ const TRANSLATION_DB = [
         targetYear: 1914,
         translation: "Padre vivo",
         type: "NIVEL DE PRECISIÓN: ALTO",
-        explanation: "Se hace patente la transformación de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
+        explanation: "Se hace patente la transformation de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
     },
     {
         term: "Padre vivo",
@@ -194,7 +194,6 @@ const TRANSLATION_DB = [
     }
 ];
 
-// CONTROLADOR DE APLICACIÓN
 class AppController {
     constructor() {
         this.sourceYear = 1969;
@@ -315,8 +314,13 @@ class AppController {
         const btnEnter = document.getElementById('btn-enter');
         if (btnEnter) {
             btnEnter.addEventListener('click', () => {
-                document.getElementById('screen-intro').classList.remove('active');
-                document.getElementById('screen-app').classList.add('active');
+                const screenIntro = document.getElementById('screen-intro');
+                const screenApp = document.getElementById('screen-app');
+
+                if (screenIntro && screenApp) {
+                    screenIntro.classList.remove('active');
+                    screenApp.classList.add('active');
+                }
             });
         }
 
@@ -326,7 +330,10 @@ class AppController {
                 document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
 
                 e.target.classList.add('active');
-                document.getElementById(e.target.dataset.target).classList.add('active');
+                const targetPanel = document.getElementById(e.target.dataset.target);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
             });
         });
 
@@ -345,7 +352,5 @@ class AppController {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new AppController();
-});
     new AppController();
 });
