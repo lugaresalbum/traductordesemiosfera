@@ -8,72 +8,157 @@
 </head>
 <body>
 
-    <header>
-        <!-- SELECTOR DE SEMIOSFERA CON ESTAMPILLES DE BORGES -->
-        <div class="semiosphere-selector">
-            
-            <!-- LADO IZQUIERDO: ORIGEN (1969 / BORGES VIEJO) -->
-            <div class="semiosphere-box box-source" id="box-source">
-                <div class="stamp-frame" id="stamp-src">
-                    <img src="assets/img/borges-viejo.jpg" alt="Borges 1969">
-                    <span class="stamp-label">CAMBRIDGE '69</span>
-                </div>
-                <div class="box-content">
-                    <span class="sys-tag">SEMIOSFERA ORIGEN</span>
-                    <span class="year" id="src-year">1969</span>
-                    <span class="loc" id="src-loc">Cambridge (Borges mayor)</span>
-                </div>
-            </div>
-
-            <!-- BOTÓN INTERCAMBIO -->
-            <button id="btn-swap" class="btn-swap" title="Invertir dirección de traducción">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
-                    <path d="M7 16l-4-4m0 0l4-4m-4 4h18M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </button>
-
-            <!-- LADO DERECHO: DESTINO (1914 / BORGES JOVEN) -->
-            <div class="semiosphere-box box-target" id="box-target">
-                <div class="box-content" style="text-align: right;">
-                    <span class="sys-tag">SEMIOSFERA DESTINO</span>
-                    <span class="year" id="tgt-year">1914</span>
-                    <span class="loc" id="tgt-loc">Ginebra (Borges joven)</span>
-                </div>
-                <div class="stamp-frame" id="stamp-tgt">
-                    <img src="assets/img/borges-joven.jpg" alt="Borges 1914">
-                    <span class="stamp-label">GINEBRA '14</span>
-                </div>
-            </div>
-
+    <!-- ===================================================
+         1. PANTALLA DE INICIO / PORTADA
+         =================================================== -->
+    <section id="hero-screen" class="screen-container">
+        <div class="hero-card">
+            <span class="sys-tag">SISTEMA DE TRADUCCIÓN SEMIÓTICA</span>
+            <h1>EL OTRO</h1>
+            <p class="hero-subtitle">Jorge Luis Borges (1914 — 1969)</p>
+            <p class="hero-description">
+                Un experimento de traducción entre dos semiosferas temporales y espaciales: el Borges joven de Ginebra y el Borges mayor de Cambridge.
+            </p>
+            <button id="btn-enter" class="btn-primary">INGRESAR AL SISTEMA</button>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- VISTA: LA FRONTERA CON LA ESTAMPILLA DEL BANCO -->
-        <div id="panel-frontier" class="tab-panel">
-            <article class="concept-article">
-                <h2>La Frontera Semiótica</h2>
+    <!-- ===================================================
+         2. APLICACIÓN PRINCIPAL (OCULTA INICIALMENTE O VISIBLE)
+         =================================================== -->
+    <div id="main-app" class="app-layout">
+        
+        <header>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="panel-translator">TRADUCTOR</button>
+                <button class="nav-btn" data-tab="panel-story">EL CUENTO</button>
+                <button class="nav-btn" data-tab="panel-frontier">LA FRONTERA</button>
+            </nav>
+
+            <!-- SELECTOR DE SEMIOSFERA CON ESTAMPILLES DE BORGES -->
+            <div class="semiosphere-selector">
                 
-                <!-- CAJA DE EVIDENCIA: EL BANCO JUNTO AL RÍO -->
-                <figure class="frontier-evidence">
-                    <div class="stamp-frame">
-                        <img src="assets/img/banco-rio.jpg" alt="Banco junto al río">
-                        <span class="stamp-label">RHÔNE / CHARLES</span>
+                <!-- ORIGEN (1969 / BORGES VIEJO) -->
+                <div class="semiosphere-box box-source" id="box-source">
+                    <div class="stamp-frame" id="stamp-src">
+                        <img src="assets/img/borges-viejo.jpg" alt="Borges 1969">
+                        <span class="stamp-label">CAMBRIDGE '69</span>
                     </div>
-                    <figcaption class="evidence-caption">
-                        <strong>FIG. 1 — ESPACIO LIMINAR</strong>
-                        <span>Banco de madera frente al agua. Punto exacto de solapamiento espacial.</span>
-                    </figcaption>
-                </figure>
+                    <div class="box-content">
+                        <span class="sys-tag">SEMIOSFERA ORIGEN</span>
+                        <span class="year" id="src-year">1969</span>
+                        <span class="loc" id="src-loc">Cambridge (Borges mayor)</span>
+                    </div>
+                </div>
 
-                <blockquote class="editorial-quote">
-                    «Medio siglo no pasa en vano. Bajo nuestra conversación de personas de lecturas distintas y de gustos distintos, comprendí que no podíamos entendernos.»
-                </blockquote>
-                
-                <p>En la semiótica de Lotman, la frontera no es simplemente una línea divisoria, sino un mecanismo de traducción bilingüe. El banco sobre el río funciona como la zona neutra donde el diálogo entre 1914 y 1969 se vuelve físicamente posible, transfiriendo información entre ambas épocas.</p>
-            </article>
-        </div>
-    </main>
+                <!-- BOTÓN INTERCAMBIO -->
+                <button id="btn-swap" class="btn-swap" title="Invertir dirección de traducción">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                        <path d="M7 16l-4-4m0 0l4-4m-4 4h18M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </button>
+
+                <!-- DESTINO (1914 / BORGES JOVEN) -->
+                <div class="semiosphere-box box-target" id="box-target">
+                    <div class="box-content" style="text-align: right;">
+                        <span class="sys-tag">SEMIOSFERA DESTINO</span>
+                        <span class="year" id="tgt-year">1914</span>
+                        <span class="loc" id="tgt-loc">Ginebra (Borges joven)</span>
+                    </div>
+                    <div class="stamp-frame" id="stamp-tgt">
+                        <img src="assets/img/borges-joven.jpg" alt="Borges 1914">
+                        <span class="stamp-label">GINEBRA '14</span>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <main>
+            <!-- PESTAÑA 1: TRADUCTOR -->
+            <section id="panel-translator" class="tab-panel active">
+                <div class="translator-container">
+                    <div class="input-panel">
+                        <label for="source-text" class="sys-tag">TEXTO EN SEMIOSFERA ORIGEN</label>
+                        <textarea id="source-text" placeholder="Selecciona una frase o escribe aquí para traducir entre épocas..."></textarea>
+                    </div>
+                    
+                    <div class="output-panel">
+                        <span class="sys-tag">TRADUCCIÓN / RECONSTRUCCIÓN SEMIÓTICA</span>
+                        <div id="translation-output" class="translation-result">
+                            <p class="placeholder-text">El texto traducido aparecerá aquí según el contexto del Borges interlocutor...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PESTAÑA 2: EL CUENTO COMPLETO -->
+            <section id="panel-story" class="tab-panel">
+                <article class="story-content">
+                    <h2>El Otro</h2>
+                    <p class="author">Jorge Luis Borges</p>
+
+                    <p>El hecho casi se produjo en el mes de febrero de 1969, al norte de Boston, en Cambridge. No lo escribí inmediatamente porque mi primer propósito fue olvidarlo, para no perder la razón. Ahora, en 1972, pienso que si lo escribo, los otros lo leerán como un cuento y, con los años, lo será tal vez para mí.</p>
+
+                    <p>Sé que fue atroz mientras duró y más aún durante las insomnes noches que lo siguieron. Eso no significa que su relato pueda conmover a un tercero. Eran las diez de la mañana. Yo estaba recostado en un banco, frente al río Charles. A unos quinientos metros a mi derecha había un alto edificio, cuyo nombre no supe nunca. El agua gris llevaba largos trozos de hielo. Inevitablemente, el río me hizo pensar en el tiempo. La milenaria imagen de Heráclito. Yo había dormido bien; mi clase de la tarde anterior había logrado, creo, interesar a mis alumnos. No había un alma a la vista.</p>
+
+                    <p>De pronto, tuve la impresión (que los psicólogos explican) de haber vivido ya aquel momento. En el otro extremo de mi banco alguien se había sentado. Yo hubiera preferido estar solo, pero no quise levantarme en seguida, para no mostrarme incivil. El otro se había puesto a silbar. Fue entonces cuando ocurrió la primera de las muchas zozobras de esa mañana. Lo que silbaba, lo que trataba de silbar (nunca he sido muy afinado), era el estilo criollo de <em>La tapera</em> de Elías Regules. El estilo me llevó a un patio, que ha desaparecido, y al recuerdo de Álvaro Melián Lafinur, que hace tantos años ha muerto. Luego vinieron las palabras. Era las de la décima del principio. La voz no era la de Álvaro, pero quería parecerse a la de Álvaro. La reconocí con horror.</p>
+
+                    <p>Me le acerqué y le dije:</p>
+                    <p>—Señor, ¿usted es oriental o argentino?</p>
+                    <p>—Argentino, pero desde el catorce vivo en Ginebra —fue la respuesta.</p>
+                    <p>Hubo un silencio largo. Le pregunté:</p>
+                    <p>—¿En el número tres de Chemin de Malagnou, frente al sitio de Rusia?</p>
+                    <p>Me contestó que sí.</p>
+                    <p>—En tal caso —le dije resueltamente— usted se llama Jorge Luis Borges. Yo también soy Jorge Luis Borges. Estamos en 1969, en la ciudad de Cambridge.</p>
+                    <p>—No —me respondió con mi propia voz un poco lejana.</p>
+
+                    <p>Al cabo de un tiempo insistió:</p>
+                    <p>—Yo estoy aquí en Ginebra, sentado en un banco, a unos pasos del Ródano. Lo raro es que nos parezcamos, pero usted es mucho mayor, y tiene la cabeza gris.</p>
+
+                    <p>Yo le contesté:</p>
+                    <p>—Puedo probarte que no miento. Te diré cosas que no puede saber un desconocido. En casa hay un mate de plata con un pie de serpientes, que trajo de Perú nuestro bisabuelo. También hay un palangana de plata, que colgaba del arzón. En el armario de tu cuarto hay dos filas de libros. Los tres volúmenes de las <em>Mil y Una Noches</em> de Lane, con grabados en acero y notas en letra menor entre los capítulos; el diccionario latino de Quicherat; la <em>Germania</em> de Tácito en latín y en la versión de Gordon; un Don Quijote de la editorial Garnier; las <em>Tablas de Sangre</em> de Rivera Indarte, con la dedicatoria del autor; el <em>Sartor Resartus</em> de Carlyle; la biografía de Amiel y, si no me equivoco, un volumen en rústica de las poesías de Hioscinia, que leíste con avidez, descubriendo las bellezas del idioma.</p>
+
+                    <p>Se quedó un momento en silencio y luego dijo:</p>
+                    <p>—Usted me conoce bien, pero no comprende que todo esto es un sueño. Yo estoy en Ginebra, soñando con usted. Si este encuentro es un sueño, cada uno de los dos tiene que pensar que el soñador es él. Tal vez dejemos de soñar, tal vez no. Nuestro deber, entre tanto, es aceptar el sueño, como hemos aceptado el universo y el haber sido engendrados y el ver con los ojos y el respirar.</p>
+
+                    <p>—¿Y si el sueño durara? —dije ansioso.</p>
+
+                    <p>Le propuse que nos diéramos un apretón de manos para verificar la realidad. Nos tocamos los dedos. Sentí una vibración, como de corriente eléctrica. El joven sonrió y me dijo:</p>
+                    <p>—Si esto es un sueño, cada uno de los dos tiene que pensar que el soñador es él. Tal vez dejemos de soñar, tal vez no. Mi sueño ha durado ya setenta años. Al fin y al cabo, al recordarse, no hay persona que no se encuentre consigo misma. Es lo que nos pasa ahora, salvo que somos dos.</p>
+
+                    <p>Miré el reloj de mi muñeca. Éramos dos y éramos uno. Nos despedimos sin habernos tocado. Al día siguiente no volví al banco. El otro tampoco habría vuelto. He meditado mucho sobre este encuentro, que no he contado a nadie. Creo haber descubierto la clave. El encuentro fue real, pero el otro conversó conmigo en un sueño y fue así que pudo olvidarme; yo conversé con él en la vigilia y me atormenta aún el recuerdo.</p>
+
+                    <p>El otro me soñó, pero no me soñó rigurosamente. Soñó, lo deduje después, la fecha falsa en la moneda de plata.</p>
+                </article>
+            </section>
+
+            <!-- PESTAÑA 3: LA FRONTERA SEMIÓTICA -->
+            <section id="panel-frontier" class="tab-panel">
+                <article class="concept-article">
+                    <h2>La Frontera Semiótica</h2>
+                    
+                    <!-- CAJA DE EVIDENCIA: BANCO JUNTO AL RÍO -->
+                    <figure class="frontier-evidence">
+                        <div class="stamp-frame">
+                            <img src="assets/img/banco-rio.jpg" alt="Banco junto al río">
+                            <span class="stamp-label">RHÔNE / CHARLES</span>
+                        </div>
+                        <figcaption class="evidence-caption">
+                            <strong>FIG. 1 — ESPACIO LIMINAR</strong>
+                            <span>Banco de madera frente al agua. Punto exacto de solapamiento espacial.</span>
+                        </figcaption>
+                    </figure>
+
+                    <blockquote class="editorial-quote">
+                        «Medio siglo no pasa en vano. Bajo nuestra conversación de personas de lecturas distintas y de gustos distintos, comprendí que no podíamos entendernos. Éramos demasiado distintos y demasiado parecidos. No podíamos engañarnos, lo cual hace difícil el diálogo.»
+                    </blockquote>
+                    
+                    <p>En la semiótica de la cultura (Yuri Lotman), la frontera no es simplemente una línea divisoria o un límite infranqueable; es un mecanismo de traducción bilingüe. El banco sobre el río Charles / Ródano funciona como el **espacio liminar**: la zona neutra donde el diálogo entre el Borges de 1914 y el de 1969 se vuelve físicamente posible.</p>
+                </article>
+            </section>
+        </main>
+    </div>
 
     <script src="assets/js/app.js"></script>
 </body>
