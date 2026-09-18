@@ -214,6 +214,7 @@ export const TRANSLATION_DB = [
         type: "NIVEL DE PRECISIÓN: ALTO",
         explanation: "Se hace patente la transformación de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
     },
+    
     // 13. CEGUERA GRADUAL <-> VISTA COMPLETA
     {
         term: "Ceguera gradual",
