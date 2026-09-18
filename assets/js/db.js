@@ -266,7 +266,7 @@ export const TRANSLATION_DB = [
         targetYear: 1969,
         translation: "El tiempo es pasado",
         type: "NIVEL DE PRECISIÓN: ALTO",
-        explanation: "La percepción acerca del tiempo cambia. Mientras que el jóven tiene una vida por delante, el anciano transitó una vida de experiencias."
+        explanation: "La percepción acerca del tiempo cambia. Mientras que el jóven tiene una vida por delante, el anciano transitó una vida de experiences."
     },
 
     // 16. URSS <-> IMPERIO RUSO
