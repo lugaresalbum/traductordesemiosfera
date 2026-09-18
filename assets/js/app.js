@@ -194,7 +194,7 @@ const TRANSLATION_DB = [
     }
 ];
 
-// LÓGICA DE APLICACIÓN
+// CONTROLADOR DE APLICACIÓN
 class AppController {
     constructor() {
         this.sourceYear = 1969;
@@ -312,10 +312,13 @@ class AppController {
     }
 
     initEvents() {
-        document.getElementById('btn-enter').addEventListener('click', () => {
-            document.getElementById('screen-intro').classList.remove('active');
-            document.getElementById('screen-app').classList.add('active');
-        });
+        const btnEnter = document.getElementById('btn-enter');
+        if (btnEnter) {
+            btnEnter.addEventListener('click', () => {
+                document.getElementById('screen-intro').classList.remove('active');
+                document.getElementById('screen-app').classList.add('active');
+            });
+        }
 
         document.querySelectorAll('.nav-link').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -327,17 +330,22 @@ class AppController {
             });
         });
 
-        document.getElementById('btn-swap').addEventListener('click', () => {
-            const temp = this.sourceYear;
-            this.sourceYear = this.targetYear;
-            this.targetYear = temp;
+        const btnSwap = document.getElementById('btn-swap');
+        if (btnSwap) {
+            btnSwap.addEventListener('click', () => {
+                const temp = this.sourceYear;
+                this.sourceYear = this.targetYear;
+                this.targetYear = temp;
 
-            this.updateDirectionUI();
-            this.renderCatalog();
-        });
+                this.updateDirectionUI();
+                this.renderCatalog();
+            });
+        }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    new AppController();
+});
     new AppController();
 });
