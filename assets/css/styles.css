@@ -1,19 +1,16 @@
 :root {
     /* Paleta Editorial Vintage */
-    --bg-main: #f4f0ea;           /* Papel cálido / Sepia claro */
-    --bg-card: #faf8f5;           /* Blanco crema */
-    --text-main: #2b2825;         /* Tinta oscura */
-    --text-muted: #6e6a64;       /* Tinta atenuada */
-    --border-color: #dcd6cd;     /* Línea de grabado */
+    --bg-main: #f3eee7;           /* Papel cálido */
+    --bg-card: #fcf9f5;           /* Crema claro */
+    --text-main: #24211e;         /* Tinta oscura */
+    --text-muted: #6a645d;       /* Tinta tenue */
+    --border-color: #d8d0c5;     /* Borde vintage */
     
-    /* Acentos vintage con más color */
-    --accent-red: #a83228;       /* Rojo terracota */
-    --accent-gold: #d4973b;      /* Mostaza/Oro viejo */
-    --accent-blue: #3b6275;      /* Azul tinta / Río */
-    --accent-green: #486852;     /* Verde follaje vintage */
+    --accent-red: #a83228;       /* Terracota */
+    --accent-gold: #c98832;      /* Oro viejo */
+    --accent-blue: #32586b;      /* Azul río */
 
     --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Inter', -apple-system, sans-serif;
     --font-mono: 'Space Mono', monospace;
 
     --transition-smooth: all 0.25s ease;
@@ -28,10 +25,16 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    /* Textura suave de papel granulado mediante CSS */
+    background-image: 
+        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0),
+        radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
 }
 
 .sys-meta, .sys-tag, .sys-status, .sys-distance, .label, .explanation-label {
@@ -52,71 +55,75 @@ body {
     flex-direction: column;
 }
 
-/* PORTADA VINTAGE ILUSTRADA */
+/* PORTADA MINIMALISTA CON ILUSTRACIÓN INTEGRADA SUTIL EN FONDO */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 3rem 2rem;
     position: relative;
-    background-color: var(--bg-main);
+    background-color: #0d1217;
+    background-image: 
+        url('../../image.jpg'), 
+        url('../image.jpg'), 
+        url('image.jpg'), 
+        url('/image.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Capa de contraste vintage oscura para garantizar legibilidad */
+.intro-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg, 
+        rgba(15, 20, 25, 0.45) 0%, 
+        rgba(15, 20, 25, 0.65) 100%
+    );
+    z-index: 1;
 }
 
 .intro-container {
-    max-width: 850px;
+    max-width: 800px;
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* Ilustración central en marco vintage */
-.intro-illustration-frame {
-    width: 100%;
-    max-width: 720px;
-    height: 220px;
-    border: 2px solid var(--text-main);
-    padding: 6px;
-    background: var(--bg-card);
-    margin-bottom: 2rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-.intro-illustration-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: saturate(0.9) contrast(1.05);
+    position: relative;
+    z-index: 2;
 }
 
 .main-title {
     font-family: var(--font-serif);
-    font-size: clamp(3.2rem, 8vw, 5.5rem);
+    font-size: clamp(3.5rem, 9vw, 6rem);
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     line-height: 1;
-    color: var(--text-main);
-    margin: 0.5rem 0 0.2rem;
+    color: #ffffff;
+    margin: 0.8rem 0 0.2rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 
 .subtitle {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.35rem;
-    color: var(--accent-blue);
-    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    color: #f2e3c6;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 
 .intro-visual-zone {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-top: 1px double var(--border-color);
-    border-bottom: 1px double var(--border-color);
-    margin-bottom: 2rem;
+    gap: 1.8rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    margin-bottom: 2.5rem;
     width: 100%;
 }
 
@@ -127,16 +134,17 @@ body {
 
 .intro-1914 .year-label, .intro-1969 .year-label {
     font-family: var(--font-serif);
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .loc-label {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: #e0dcd5;
+    letter-spacing: 0.1em;
 }
 
 .intro-frontier {
@@ -147,15 +155,15 @@ body {
 }
 
 .bench-icon {
-    width: 55px;
-    height: 28px;
-    color: var(--text-main);
+    width: 50px;
+    height: 25px;
+    color: #ffffff;
 }
 
 .frontier-text {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: var(--accent-red);
+    color: #ff6b5b;
     letter-spacing: 0.15em;
     font-weight: 700;
 }
@@ -168,23 +176,24 @@ body {
 }
 
 .btn-primary {
-    background: var(--text-main);
-    color: var(--bg-main);
+    background: #fdfbf7;
+    color: #1a1816;
     border: none;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 700;
     padding: 1rem 2.2rem;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
     transition: var(--transition-smooth);
 }
 
 .btn-primary:hover {
-    background: var(--accent-red);
-    color: #ffffff;
-    transform: translateY(-1px);
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.45);
 }
 
 .intro-authors {
@@ -198,16 +207,17 @@ body {
     font-family: var(--font-serif);
     font-size: 1.1rem;
     font-style: italic;
-    color: var(--text-main);
+    color: #ffffff;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.6);
 }
 
 .authors-sub {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: #d8d2c8;
 }
 
-/* INTERFAZ PRINCIPAL */
+/* INTERFAZ PRINCIPAL CON TEXTURA DE PAPEL */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -239,10 +249,10 @@ body {
     background: none;
     border: none;
     font-family: var(--font-serif);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
     cursor: pointer;
-    padding: 0.3rem 0.6rem;
+    padding: 0.3rem 0.5rem;
     transition: var(--transition-smooth);
 }
 
@@ -313,7 +323,7 @@ body {
     transform: rotate(180deg);
 }
 
-/* CATÁLOGO DE TARJETAS COLORIDAS/VINTAGE */
+/* CATÁLOGO CERRADO CON DETALLES TERRACOTA */
 .catalog-section {
     margin-bottom: 2.5rem;
 }
@@ -336,7 +346,7 @@ body {
 .catalog-card-btn {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-left: 4px solid var(--accent-blue);
+    border-left: 3px solid var(--accent-blue);
     padding: 0.9rem 1.1rem;
     font-family: var(--font-serif);
     font-size: 1.15rem;
@@ -374,14 +384,14 @@ body {
     color: var(--text-muted);
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
 }
 
 .translation-card {
     background: var(--bg-card);
     border: 1px solid var(--text-main);
     padding: 2.2rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     animation: fadeIn 0.3s var(--transition-smooth);
 }
 
@@ -477,7 +487,7 @@ body {
     font-family: var(--font-mono);
 }
 
-/* ARTÍCULOS */
+/* ARTÍCULOS DE LECTURA */
 .story-article, .concept-article {
     background: var(--bg-card);
     padding: 3.5rem 3rem;
@@ -503,7 +513,7 @@ body {
     font-size: 1.2rem;
     line-height: 1.85;
     margin-bottom: 1.6rem;
-    color: #2b2825;
+    color: #24211e;
     text-align: justify;
 }
 
