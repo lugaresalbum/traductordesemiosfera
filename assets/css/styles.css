@@ -1,18 +1,13 @@
-/* ==========================================================================
-   VARIABLES Y SISTEMA DE DISEÑO (ESTÉTICA EDITORIAL DUAL)
-   ========================================================================== */
 :root {
-    /* Paleta Principal Editorial */
-    --bg-main: #f5f4ef;         /* Blanco roto / marfil cálido */
+    --bg-main: #f5f4ef;
     --bg-card: #ffffff;
-    --text-main: #1c1c1c;       /* Negro carbón */
-    --text-muted: #5a5a52;     /* Gris cálido */
-    --border-color: #d8d6cb;   /* Gris papel antiguo */
+    --text-main: #1c1c1c;
+    --text-muted: #5a5a52;
+    --border-color: #d8d6cb;
     
-    --accent-red: #8c241c;      /* Bordó / Rojo editorial */
-    --accent-blue: #2c4251;     /* Azul grisáceo sobrio */
+    --accent-red: #8c241c;
+    --accent-blue: #2c4251;
 
-    /* Fuentes */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Inter', -apple-system, sans-serif;
     --font-mono: 'Space Mono', monospace;
@@ -20,7 +15,6 @@
     --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Base */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,7 +30,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Utilidades Tipográficas */
 .sys-meta, .sys-tag, .sys-status, .sys-distance, .label, .explanation-label {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -45,9 +38,6 @@ body {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   PANTALLAS
-   ========================================================================== */
 .screen {
     display: none;
     min-height: 100vh;
@@ -58,14 +48,13 @@ body {
     flex-direction: column;
 }
 
-/* --- PORTADA / INTRO --- */
-/* --- PORTADA / INTRO CON IMAGEN DE FONDO --- */
+/* PORTADA */
 #screen-intro {
     justify-content: center;
     align-items: center;
     padding: 2rem;
     background: linear-gradient(rgba(245, 244, 239, 0.85), rgba(245, 244, 239, 0.85)), 
-                url('../../assets/real.jpg') no-repeat center center;
+                url('../real.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -108,15 +97,11 @@ body {
     flex-direction: column;
 }
 
-.intro-1914 .year-label {
+/* Tipografía idéntica para ambos años */
+.intro-1914 .year-label, .intro-1969 .year-label {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-}
-
-.intro-1969 .year-label {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 400;
 }
 
 .loc-label {
@@ -160,9 +145,7 @@ body {
     background: var(--accent-red);
 }
 
-/* ==========================================================================
-   APP PRINCIPAL & HEADER
-   ========================================================================== */
+/* APP PRINCIPAL */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -222,9 +205,7 @@ body {
     display: block;
 }
 
-/* ==========================================================================
-   SELECTOR DE SEMIOSFERA (1914 / 1969)
-   ========================================================================== */
+/* SELECTOR DE SEMIOSFERA */
 .semiosphere-selector {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -242,20 +223,10 @@ body {
     position: relative;
 }
 
-/* Estilo 1914: Serif Editorial */
 .box-source .year, .box-target .year {
-    font-size: 1.8rem;
-    margin: 0.2rem 0;
-}
-
-.semiosphere-box[data-year="1914"] .year {
     font-family: var(--font-serif);
-}
-
-/* Estilo 1969: Sans Racional */
-.semiosphere-box[data-year="1969"] .year {
-    font-family: var(--font-sans);
-    font-weight: 600;
+    font-size: 2rem;
+    margin: 0.2rem 0;
 }
 
 .btn-swap {
@@ -277,9 +248,7 @@ body {
     transform: rotate(180deg);
 }
 
-/* ==========================================================================
-   FORMULARIO Y BUSCADOR
-   ========================================================================== */
+/* CONTROLES */
 .input-wrapper {
     display: flex;
     gap: 0.5rem;
@@ -329,11 +298,9 @@ body {
     color: var(--bg-main);
 }
 
-/* ==========================================================================
-   FICHA EDITORIAL DE RESULTADO (TRANSLATION CARD)
-   ========================================================================== */
+/* FICHA RESULTADO */
 .translation-display {
-    min-height: 280px;
+    min-height: 250px;
     margin-bottom: 3rem;
 }
 
@@ -393,16 +360,15 @@ body {
 }
 
 .term-result {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--accent-blue);
     margin-top: 0.2rem;
 }
 
-.card-meta {
-    margin: 1.5rem 0;
-    padding: 0.8rem;
-    background: var(--bg-main);
-    font-size: 0.85rem;
+.card-explanation {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
 .card-explanation p {
@@ -411,21 +377,6 @@ body {
     margin-top: 0.4rem;
 }
 
-/* ANOMALÍA CONCEPTUAL (CASO DÓLAR 1974) */
-.translation-card.anomaly-active {
-    border: 2px solid var(--accent-red);
-    background: #fffdfd;
-}
-
-.translation-card.anomaly-active .term-result {
-    color: var(--accent-red);
-    font-family: var(--font-mono);
-    letter-spacing: -0.02em;
-}
-
-/* ==========================================================================
-   MEMORIA DE TRADUCCIÓN
-   ========================================================================== */
 .memory-section {
     border-top: 1px solid var(--border-color);
     padding-top: 2rem;
@@ -459,9 +410,56 @@ body {
     font-family: var(--font-mono);
 }
 
-/* ==========================================================================
-   ARTÍCULOS CONCEPTUALES
-   ========================================================================== */
+/* LECTURA DEL CUENTO COMPLETO */
+.story-article {
+    background: var(--bg-card);
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.story-header {
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.story-header h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+}
+
+.story-author {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.story-body p {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-indent: 1.5rem;
+}
+
+.story-body p:first-of-type {
+    text-indent: 0;
+}
+
+.story-end {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+    margin-top: 2rem;
+}
+
 .concept-article h2 {
     font-family: var(--font-serif);
     font-size: 2.2rem;
@@ -486,22 +484,6 @@ body {
     margin-top: 0.5rem;
 }
 
-.concept-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.concept-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 1.5rem;
-}
-
-/* ==========================================================================
-   FOOTER & RESPONSIVE
-   ========================================================================== */
 .app-footer {
     display: flex;
     justify-content: space-between;
@@ -520,19 +502,9 @@ body {
 }
 
 @media (max-width: 680px) {
-    .semiosphere-selector {
-        grid-template-columns: 1fr;
-    }
-    .btn-swap {
-        margin: 0 auto;
-        transform: rotate(90deg);
-    }
-    .concept-grid {
-        grid-template-columns: 1fr;
-    }
-    .app-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
+    .semiosphere-selector { grid-template-columns: 1fr; }
+    .btn-swap { margin: 0 auto; transform: rotate(90deg); }
+    .app-header { flex-direction: column; gap: 1rem; text-align: center; }
+    .story-article { padding: 1.5rem 1rem; }
+    .story-body p { text-indent: 0; }
 }
