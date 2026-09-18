@@ -312,10 +312,10 @@ function initApp() {
     const btnEnter = document.getElementById('btn-enter');
     if (btnEnter) {
         btnEnter.addEventListener('click', function() {
-            document.getElementById('screen-intro').classList.remove('active');
-            document.getElementById('screen-app').classList.add('active');
-            window.scrollTo(0, 0);
-        });
+          document.getElementById('btn-enter').addEventListener('click', () => {
+    document.getElementById('screen-intro').classList.add('hidden');
+    document.getElementById('app-container').classList.remove('hidden');
+});
     }
 
     document.querySelectorAll('.nav-link').forEach(btn => {
