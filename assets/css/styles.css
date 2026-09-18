@@ -571,3 +571,26 @@ body {
     .story-article, .concept-article { padding: 2rem 1.2rem; }
     .catalog-grid { grid-template-columns: 1fr; }
 }
+/* AJUSTE DE TAMAÑO Y ALINEACIÓN DE ESTAMPILLAS */
+.stamp-img-raw {
+    width: auto;
+    max-height: 90px;
+    object-fit: contain;
+}
+
+.stamp-frontier {
+    max-height: 80px;
+}
+
+.semiosphere-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.semiosphere-info {
+    display: flex;
+    flex-direction: column;
+}
