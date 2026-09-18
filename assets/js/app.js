@@ -1,4 +1,3 @@
-// BASE DE DATOS COMPLETA
 const TRANSLATION_DB = [
     {
         term: "Río Charles",
@@ -182,7 +181,7 @@ const TRANSLATION_DB = [
         targetYear: 1914,
         translation: "Padre vivo",
         type: "NIVEL DE PRECISIÓN: ALTO",
-        explanation: "Se hace patente la transformation de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
+        explanation: "Se hace patente la transformación de la figura paterna en la semiosfera familiar. En 1914, el padre es una presencia activa que, entre otras cosas, cuestiona e ironiza sobre la fe. En 1969, en cambio, es solo recuerdo."
     },
     {
         term: "Padre vivo",
@@ -194,67 +193,57 @@ const TRANSLATION_DB = [
     }
 ];
 
-class AppController {
-    constructor() {
-        this.sourceYear = 1969;
-        this.targetYear = 1914;
+function initApp() {
+    let sourceYear = 1969;
+    let targetYear = 1914;
 
-        this.srcYearEl = document.getElementById('src-year');
-        this.srcLocEl = document.getElementById('src-loc');
-        this.tgtYearEl = document.getElementById('tgt-year');
-        this.tgtLocEl = document.getElementById('tgt-loc');
-        this.boxSource = document.getElementById('box-source');
-        this.boxTarget = document.getElementById('box-target');
-        this.catalogSourceLabel = document.getElementById('catalog-source-label');
-        this.catalogGrid = document.getElementById('catalog-grid');
+    const srcYearEl = document.getElementById('src-year');
+    const srcLocEl = document.getElementById('src-loc');
+    const tgtYearEl = document.getElementById('tgt-year');
+    const tgtLocEl = document.getElementById('tgt-loc');
+    const boxSource = document.getElementById('box-source');
+    const boxTarget = document.getElementById('box-target');
+    const catalogSourceLabel = document.getElementById('catalog-source-label');
+    const catalogGrid = document.getElementById('catalog-grid');
 
-        this.placeholder = document.getElementById('display-placeholder');
-        this.card = document.getElementById('translation-card');
-        this.cardSrcYear = document.getElementById('card-src-year');
-        this.cardTgtYear = document.getElementById('card-tgt-year');
-        this.cardSrcTerm = document.getElementById('card-src-term');
-        this.cardTgtTerm = document.getElementById('card-tgt-term');
-        this.cardType = document.getElementById('card-type');
-        this.cardExplanationContainer = document.getElementById('card-explanation-container');
-        this.cardExplanation = document.getElementById('card-explanation-text');
-        this.cardStatus = document.getElementById('card-status');
-        this.memoryList = document.getElementById('memory-list');
+    const placeholder = document.getElementById('display-placeholder');
+    const card = document.getElementById('translation-card');
+    const cardSrcYear = document.getElementById('card-src-year');
+    const cardTgtYear = document.getElementById('card-tgt-year');
+    const cardSrcTerm = document.getElementById('card-src-term');
+    const cardTgtTerm = document.getElementById('card-tgt-term');
+    const cardType = document.getElementById('card-type');
+    const cardExplanationContainer = document.getElementById('card-explanation-container');
+    const cardExplanation = document.getElementById('card-explanation-text');
+    const cardStatus = document.getElementById('card-status');
+    const memoryList = document.getElementById('memory-list');
 
-        this.init();
-    }
-
-    init() {
-        this.updateDirectionUI();
-        this.renderCatalog();
-        this.initEvents();
-    }
-
-    updateDirectionUI() {
-        if (this.sourceYear === 1969) {
-            this.srcYearEl.textContent = "1969";
-            this.srcLocEl.textContent = "CAMBRIDGE (Borges mayor)";
-            this.tgtYearEl.textContent = "1914";
-            this.tgtLocEl.textContent = "GINEBRA (Borges joven)";
-            this.boxSource.setAttribute('data-year', '1969');
-            this.boxTarget.setAttribute('data-year', '1914');
-            this.catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
+    function updateDirectionUI() {
+        if (sourceYear === 1969) {
+            srcYearEl.textContent = "1969";
+            srcLocEl.textContent = "CAMBRIDGE (Borges mayor)";
+            tgtYearEl.textContent = "1914";
+            tgtLocEl.textContent = "GINEBRA (Borges joven)";
+            boxSource.setAttribute('data-year', '1969');
+            boxTarget.setAttribute('data-year', '1914');
+            catalogSourceLabel.textContent = "1969 — CAMBRIDGE";
         } else {
-            this.srcYearEl.textContent = "1914";
-            this.srcLocEl.textContent = "GINEBRA (Borges joven)";
-            this.tgtYearEl.textContent = "1969";
-            this.tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
-            this.boxSource.setAttribute('data-year', '1914');
-            this.boxTarget.setAttribute('data-year', '1969');
-            this.catalogSourceLabel.textContent = "1914 — GINEBRA";
+            srcYearEl.textContent = "1914";
+            srcLocEl.textContent = "GINEBRA (Borges joven)";
+            tgtYearEl.textContent = "1969";
+            tgtLocEl.textContent = "CAMBRIDGE (Borges mayor)";
+            boxSource.setAttribute('data-year', '1914');
+            boxTarget.setAttribute('data-year', '1969');
+            catalogSourceLabel.textContent = "1914 — GINEBRA";
         }
 
-        this.placeholder.classList.remove('hidden');
-        this.card.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+        card.classList.add('hidden');
     }
 
-    renderCatalog() {
-        this.catalogGrid.innerHTML = "";
-        const availableEntries = TRANSLATION_DB.filter(entry => entry.sourceYear === this.sourceYear);
+    function renderCatalog() {
+        catalogGrid.innerHTML = "";
+        const availableEntries = TRANSLATION_DB.filter(entry => entry.sourceYear === sourceYear);
 
         availableEntries.forEach(entry => {
             const btn = document.createElement('button');
@@ -264,39 +253,39 @@ class AppController {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.catalog-card-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                this.handleTranslation(entry);
+                handleTranslation(entry);
             });
 
-            this.catalogGrid.appendChild(btn);
+            catalogGrid.appendChild(btn);
         });
     }
 
-    handleTranslation(entry) {
-        this.placeholder.classList.add('hidden');
-        this.card.classList.remove('hidden');
+    function handleTranslation(entry) {
+        placeholder.classList.add('hidden');
+        card.classList.remove('hidden');
 
-        this.cardSrcYear.textContent = this.sourceYear;
-        this.cardTgtYear.textContent = this.targetYear;
-        this.cardSrcTerm.textContent = entry.term.toUpperCase();
-        this.cardTgtTerm.textContent = entry.translation;
-        this.cardType.textContent = entry.type;
+        cardSrcYear.textContent = sourceYear;
+        cardTgtYear.textContent = targetYear;
+        cardSrcTerm.textContent = entry.term.toUpperCase();
+        cardTgtTerm.textContent = entry.translation;
+        cardType.textContent = entry.type;
 
         if (entry.explanation && entry.explanation.trim() !== "") {
-            this.cardExplanationContainer.classList.remove('hidden');
-            this.cardExplanation.textContent = entry.explanation;
+            cardExplanationContainer.classList.remove('hidden');
+            cardExplanation.textContent = entry.explanation;
         } else {
-            this.cardExplanationContainer.classList.add('hidden');
-            this.cardExplanation.textContent = "";
+            cardExplanationContainer.classList.add('hidden');
+            cardExplanation.textContent = "";
         }
 
-        this.cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
-        this.addMemoryItem(entry);
+        cardStatus.textContent = "FICHA DE TRADUCCIÓN // SECUENCIA OK";
+        addMemoryItem(entry);
     }
 
-    addMemoryItem(entry) {
-        if (!this.memoryList) return;
+    function addMemoryItem(entry) {
+        if (!memoryList) return;
 
-        const emptyMsg = this.memoryList.querySelector('.empty-memory');
+        const emptyMsg = memoryList.querySelector('.empty-memory');
         if (emptyMsg) emptyMsg.remove();
 
         const item = document.createElement('div');
@@ -307,50 +296,48 @@ class AppController {
             <span>${entry.translation} [${entry.type}]</span>
         `;
 
-        this.memoryList.prepend(item);
+        memoryList.prepend(item);
     }
 
-    initEvents() {
-        const btnEnter = document.getElementById('btn-enter');
-        if (btnEnter) {
-            btnEnter.addEventListener('click', () => {
-                const screenIntro = document.getElementById('screen-intro');
-                const screenApp = document.getElementById('screen-app');
-
-                if (screenIntro && screenApp) {
-                    screenIntro.classList.remove('active');
-                    screenApp.classList.add('active');
-                }
-            });
-        }
-
-        document.querySelectorAll('.nav-link').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-
-                e.target.classList.add('active');
-                const targetPanel = document.getElementById(e.target.dataset.target);
-                if (targetPanel) {
-                    targetPanel.classList.add('active');
-                }
-            });
-        });
-
-        const btnSwap = document.getElementById('btn-swap');
-        if (btnSwap) {
-            btnSwap.addEventListener('click', () => {
-                const temp = this.sourceYear;
-                this.sourceYear = this.targetYear;
-                this.targetYear = temp;
-
-                this.updateDirectionUI();
-                this.renderCatalog();
-            });
-        }
+    // NAVEGACIÓN Y EVENTOS
+    const btnEnter = document.getElementById('btn-enter');
+    if (btnEnter) {
+        btnEnter.onclick = function() {
+            document.getElementById('screen-intro').classList.remove('active');
+            document.getElementById('screen-app').classList.add('active');
+            window.scrollTo(0, 0);
+        };
     }
+
+    document.querySelectorAll('.nav-link').forEach(btn => {
+        btn.onclick = function(e) {
+            document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+            e.target.classList.add('active');
+            const target = document.getElementById(e.target.dataset.target);
+            if (target) target.classList.add('active');
+        };
+    });
+
+    const btnSwap = document.getElementById('btn-swap');
+    if (btnSwap) {
+        btnSwap.onclick = function() {
+            const temp = sourceYear;
+            sourceYear = targetYear;
+            targetYear = temp;
+
+            updateDirectionUI();
+            renderCatalog();
+        };
+    }
+
+    updateDirectionUI();
+    renderCatalog();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new AppController();
-});
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
